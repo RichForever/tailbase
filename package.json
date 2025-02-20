@@ -118,11 +118,6 @@
               "hidden": false
             },
             {
-              "type": "ci",
-              "section": "Continuous Integrations",
-              "hidden": false
-            },
-            {
               "type": "revert",
               "section": "Reverts",
               "hidden": false
