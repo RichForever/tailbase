@@ -116,10 +116,6 @@
               "section": "Continuous Integrations"
             },
             {
-              "type": "chore",
-              "section": "Chores"
-            },
-            {
               "type": "revert",
               "section": "Reverts"
             }
