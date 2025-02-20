@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/RichForever/TimberTail/compare/1.2.4...1.3.0) (2025-02-20)
+
+### Features
+
+* remove types form package.json ([3893145](https://github.com/RichForever/TimberTail/commit/389314574a52f97d67b83b2a950df7e352782670))
+
 ## [1.2.4](https://github.com/RichForever/TimberTail/compare/1.2.3...1.2.4) (2025-02-20)
 
 ## [1.2.3](https://github.com/RichForever/TimberTail/compare/1.2.2...1.2.3) (2025-02-20)
