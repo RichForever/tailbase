@@ -4,7 +4,7 @@
 
 ### Features
 
-* add commit linting ([8e3a88d](https://github.com/RichForever/TimberTail/commit/8e3a88d66ad331278fe2e895b0d4e7d9c3cd60b7))
+- add commit linting ([8e3a88d](https://github.com/RichForever/TimberTail/commit/8e3a88d66ad331278fe2e895b0d4e7d9c3cd60b7))
 
 ## 1.1.0 (2025-02-20)
 
