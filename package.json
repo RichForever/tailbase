@@ -95,42 +95,42 @@
             {
               "type": "style",
               "section": "Styles",
-              "hidden":  false
+              "hidden": false
             },
             {
               "type": "refactor",
               "section": "Code Refactoring",
-              "hidden":  false
+              "hidden": false
             },
             {
               "type": "perf",
               "section": "Performance Improvements",
-              "hidden":  false
+              "hidden": false
             },
             {
               "type": "test",
               "section": "Tests",
-              "hidden":  false
+              "hidden": false
             },
             {
               "type": "build",
               "section": "Builds",
-              "hidden":  false
+              "hidden": false
             },
             {
               "type": "ci",
               "section": "Continuous Integrations",
-              "hidden":  false
+              "hidden": false
             },
             {
               "type": "chore",
               "section": "Chores",
-              "hidden":  false
+              "hidden": false
             },
             {
               "type": "revert",
               "section": "Reverts",
-              "hidden":  false
+              "hidden": false
             }
           ]
         }
