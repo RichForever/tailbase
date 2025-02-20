@@ -1,6 +1,6 @@
 {
   "name": "my-webpack-project",
-  "version": "1.2.2",
+  "version": "1.2.1",
   "description": "My webpack project",
   "main": "index.js",
   "scripts": {
@@ -89,35 +89,48 @@
             },
             {
               "type": "docs",
-              "section": "Documentation"
+              "section": "Documentation",
+              "hidden": false
             },
             {
               "type": "style",
-              "section": "Styles"
+              "section": "Styles",
+              "hidden":  false
             },
             {
               "type": "refactor",
-              "section": "Code Refactoring"
+              "section": "Code Refactoring",
+              "hidden":  false
             },
             {
               "type": "perf",
-              "section": "Performance Improvements"
+              "section": "Performance Improvements",
+              "hidden":  false
             },
             {
               "type": "test",
-              "section": "Tests"
+              "section": "Tests",
+              "hidden":  false
             },
             {
               "type": "build",
-              "section": "Builds"
+              "section": "Builds",
+              "hidden":  false
             },
             {
               "type": "ci",
-              "section": "Continuous Integrations"
+              "section": "Continuous Integrations",
+              "hidden":  false
+            },
+            {
+              "type": "chore",
+              "section": "Chores",
+              "hidden":  false
             },
             {
               "type": "revert",
-              "section": "Reverts"
+              "section": "Reverts",
+              "hidden":  false
             }
           ]
         }
