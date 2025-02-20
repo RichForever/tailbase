@@ -123,11 +123,6 @@
               "hidden": false
             },
             {
-              "type": "chore",
-              "section": "Chores",
-              "hidden": false
-            },
-            {
               "type": "revert",
               "section": "Reverts",
               "hidden": false

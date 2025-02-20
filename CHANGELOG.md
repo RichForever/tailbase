@@ -1,7 +1,7 @@
 # Changelog
 
-* build: add hidden flag to show type sections in changelog file (c05ec1f)
-* build: add hidden flag to show type sections in changelog file (ab7b5ed)
+- build: add hidden flag to show type sections in changelog file (c05ec1f)
+- build: add hidden flag to show type sections in changelog file (ab7b5ed)
 
 ## [1.2.2](https://github.com/RichForever/TimberTail/compare/1.2.1...1.2.2) (2025-02-20)
 
