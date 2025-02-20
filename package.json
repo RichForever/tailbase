@@ -21,6 +21,8 @@
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
     "@destination/prettier-plugin-twig": "^1.5.0",
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "@prettier/plugin-php": "^0.22.2",
