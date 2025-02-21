@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/RichForever/TimberTail/compare/1.1.3...1.2.0) (2025-02-21)
+
+### 🚀 Features
+
+* improve linting ([8732eb5](https://github.com/RichForever/TimberTail/commit/8732eb58cd7db1c30ee9f10071a480e7ed3c182a))
+
 ## [1.1.3](https://github.com/RichForever/TimberTail/compare/1.1.2...1.1.3) (2025-02-21)
 
 ### 📝 Documentation
