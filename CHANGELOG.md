@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1](https://github.com/RichForever/TimberTail/compare/1.2.0...1.2.1) (2025-02-21)
+
+### 🏗 Build System
+
+* remove eslint config file ([4ad29e1](https://github.com/RichForever/TimberTail/commit/4ad29e148ff51aebcc0be0073058233d9d5b0dca))
+
 ## [1.2.0](https://github.com/RichForever/TimberTail/compare/1.1.3...1.2.0) (2025-02-21)
 
 ### 🚀 Features
