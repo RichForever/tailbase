@@ -4,7 +4,7 @@
 
 ### 📝 Documentation
 
-* **changelog.md:** update changelog ([697800b](https://github.com/RichForever/TimberTail/commit/697800bf3e948a59e069210e7a3969031e376c7c))
+- **changelog.md:** update changelog ([697800b](https://github.com/RichForever/TimberTail/commit/697800bf3e948a59e069210e7a3969031e376c7c))
 
 ## [1.1.1](https://github.com/RichForever/TimberTail/compare/1.1.0...1.1.1) (2025-02-21)
 
