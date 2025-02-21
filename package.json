@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project",
+  "name": "timbertail-theme",
   "version": "1.2.1",
-  "description": "My webpack project",
+  "description": "TimberTail Theme package.json file",
   "keywords": [
     "wordpress",
     "theme",
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
+    "@babel/eslint-parser": "^7.26.8",
     "@babel/preset-env": "^7.20.2",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
@@ -58,7 +59,6 @@
     "esbuild-loader": "^4.0.2",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-package-json": "^0.26.0",
     "eslint-plugin-twig": "^0.1.5",
     "glob-all": "^3.3.1",
     "husky": "^9.1.7",
