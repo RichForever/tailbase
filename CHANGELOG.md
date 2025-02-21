@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.0](https://github.com/RichForever/TimberTail/compare/1.2.1...1.3.0) (2025-02-21)
+
+### 🚀 Features
+
+* add eslint ([c1e918d](https://github.com/RichForever/TimberTail/commit/c1e918d66451d2dd13d85053fa50cf34b132b930))
+* fix eslint warnings ([226ab40](https://github.com/RichForever/TimberTail/commit/226ab40119efa119c01491067708574d82046265))
+
+### 🏗 Build System
+
+* update eslint config ([42467ba](https://github.com/RichForever/TimberTail/commit/42467bafdbacab132d15def0dc447c81f78dfc25))
+
 ## [1.2.1](https://github.com/RichForever/TimberTail/compare/1.2.0...1.2.1) (2025-02-21)
 
 ### 🏗 Build System
