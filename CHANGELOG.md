@@ -4,7 +4,7 @@
 
 ### 📝 Documentation
 
-* **changelog.md:** use asterisk in list ([01b392d](https://github.com/RichForever/TimberTail/commit/01b392df1d92776c5285f759f3ed32c0b157d5c7))
+- **changelog.md:** use asterisk in list ([01b392d](https://github.com/RichForever/TimberTail/commit/01b392df1d92776c5285f759f3ed32c0b157d5c7))
 
 ## [1.1.2](https://github.com/RichForever/TimberTail/compare/1.1.1...1.1.2) (2025-02-21)
 

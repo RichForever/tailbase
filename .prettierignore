@@ -3,3 +3,6 @@ auth.json
 webpack.config.js
 tailwind.theme.config.js
 tailwind.config.js
+node_modules
+build
+dist
