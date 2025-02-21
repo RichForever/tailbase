@@ -1,8 +1,7 @@
 const anchorScroll = () => {
   const linkItems = document.querySelectorAll(".link__anchor a"); // get all navbar items with anchor class
   linkItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      // e.preventDefault();
+    item.addEventListener("click", () => {
       const href = item.getAttribute("href").substring(1); // remove # tag from string and get target value
       if (!href) return;
 
