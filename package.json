@@ -1,6 +1,6 @@
 {
   "name": "my-webpack-project",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "My webpack project",
   "main": "index.js",
   "scripts": {
@@ -66,6 +66,9 @@
     "webpack-cli": "^5.0.1",
     "webpack-remove-empty-scripts": "^1.0.1"
   },
+  "overrides": {
+    "conventional-changelog-conventionalcommits": "8.0.0"
+  },
   "release-it": {
     "git": {
       "commitMessage": "chore: release ${version}"
@@ -81,14 +84,61 @@
         "infile": "CHANGELOG.md",
         "preset": {
           "name": "conventionalcommits",
-          "type": [
+          "types": [
             {
               "type": "feat",
-              "section": "Features"
+              "section": "🚀 Features",
+              "hidden": false
             },
             {
               "type": "fix",
-              "section": "Bug Fixes"
+              "section": "🐛 Bug Fixes",
+              "hidden": false
+            },
+            {
+              "type": "docs",
+              "section": "📝 Documentation",
+              "hidden": false
+            },
+            {
+              "type": "style",
+              "section": "💄 Code Style",
+              "hidden": false
+            },
+            {
+              "type": "refactor",
+              "section": "♻️ Refactoring",
+              "hidden": false
+            },
+            {
+              "type": "perf",
+              "section": "⚡ Performance Improvements",
+              "hidden": false
+            },
+            {
+              "type": "test",
+              "section": "🧪 Tests",
+              "hidden": false
+            },
+            {
+              "type": "build",
+              "section": "🏗 Build System",
+              "hidden": false
+            },
+            {
+              "type": "ci",
+              "section": "🔧 Continuous Integration",
+              "hidden": false
+            },
+            {
+              "type": "chore",
+              "section": "📦 Miscellaneous",
+              "hidden": false
+            },
+            {
+              "type": "revert",
+              "section": "⏪ Reversions",
+              "hidden": false
             }
           ]
         }
