@@ -45,6 +45,7 @@
     "@eslint/js": "^9.20.0",
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "@prettier/plugin-php": "^0.22.2",
+    "@release-it/bumper": "^7.0.1",
     "@release-it/conventional-changelog": "^10.0.0",
     "@webpack-cli/generators": "^3.0.1",
     "alpinejs": "^3.12.3",
@@ -104,6 +105,11 @@
       "publish": false
     },
     "plugins": {
+      "@release-it/bumper": {
+        "in": "style.css",
+        "out": "style.css",
+        "regex": "Version:\\s*([\\d.]+)"
+      },
       "@release-it/conventional-changelog": {
         "infile": "CHANGELOG.md",
         "preset": {
