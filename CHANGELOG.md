@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.1](https://github.com/RichForever/TimberTail/compare/1.3.0...1.3.1) (2025-03-06)
+
+### 📦 Miscellaneous
+
+* update theme version ([fc5fc0c](https://github.com/RichForever/TimberTail/commit/fc5fc0c9548edcb0187a44b2a6e72c2e4e679a39))
+
 ## [1.3.0](https://github.com/RichForever/TimberTail/compare/1.2.1...1.3.0) (2025-02-21)
 
 ### 🚀 Features
