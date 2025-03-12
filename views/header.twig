@@ -29,7 +29,7 @@
         this.isSticky = window.scrollY >= 150;
       },
       init() {
-        this.navbarHeight = this.$refs.HeaderNavbar.clientHeight + 'px';
+        this.navbarHeight = this.$refs.HeaderNavbar ? this.$refs.HeaderNavbar.clientHeight + 'px' : 0;
         window.addEventListener('scroll', () => {
           this.updateStickyState();
         });
