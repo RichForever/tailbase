@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.2](https://github.com/RichForever/TimberTail/compare/1.3.1...1.3.2) (2025-03-12)
+
+### ♻️ Refactoring
+
+* **header.twig:** add if statement to check if element exist ([5623499](https://github.com/RichForever/TimberTail/commit/5623499d24f787f633c59f3ecf957224913ce50b))
+
 ## [1.3.1](https://github.com/RichForever/TimberTail/compare/1.3.0...1.3.1) (2025-03-06)
 
 ### 📦 Miscellaneous
