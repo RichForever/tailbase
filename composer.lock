@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "bfe3356504acb1511693b3d34e9a736d",
+  "content-hash": "57bdbce044f5a26fc070304bc7f05089",
   "packages": [
     {
       "name": "composer/installers",
@@ -46,7 +46,9 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Kyle Robinson Young",
@@ -180,16 +182,16 @@
     },
     {
       "name": "smithfield-studio/acf-svg-icon-picker",
-      "version": "3.1.2",
+      "version": "3.1.4",
       "source": {
         "type": "git",
         "url": "https://github.com/smithfield-studio/acf-svg-icon-picker.git",
-        "reference": "c2f4de9199786465059ba740e7da12d9ff6d2b5e"
+        "reference": "a39a772d121ae37a9ed7aa81cd835527752b7bdf"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/smithfield-studio/acf-svg-icon-picker/zipball/c2f4de9199786465059ba740e7da12d9ff6d2b5e",
-        "reference": "c2f4de9199786465059ba740e7da12d9ff6d2b5e",
+        "url": "https://api.github.com/repos/smithfield-studio/acf-svg-icon-picker/zipball/a39a772d121ae37a9ed7aa81cd835527752b7bdf",
+        "reference": "a39a772d121ae37a9ed7aa81cd835527752b7bdf",
         "shasum": ""
       },
       "require-dev": {
@@ -199,7 +201,9 @@
       },
       "type": "wordpress-plugin",
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Mike Sheppard"
@@ -214,25 +218,32 @@
         }
       ],
       "description": "Add ACF field for selecting SVG icons.",
-      "keywords": ["acf", "field", "icon", "picker", "svg", "wordpress"],
+      "keywords": [
+        "acf",
+        "field",
+        "icon",
+        "picker",
+        "svg",
+        "wordpress"
+      ],
       "support": {
         "issues": "https://github.com/smithfield-studio/acf-svg-icon-picker/issues",
         "source": "https://github.com/smithfield-studio/acf-svg-icon-picker"
       },
-      "time": "2024-06-06T08:54:55+00:00"
+      "time": "2024-10-15T12:29:37+00:00"
     },
     {
       "name": "symfony/deprecation-contracts",
-      "version": "v3.5.0",
+      "version": "v3.6.0",
       "source": {
         "type": "git",
         "url": "https://github.com/symfony/deprecation-contracts.git",
-        "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1"
+        "reference": "63afe740e99a13ba87ec199bb07bbdee937a5b62"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
-        "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
+        "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/63afe740e99a13ba87ec199bb07bbdee937a5b62",
+        "reference": "63afe740e99a13ba87ec199bb07bbdee937a5b62",
         "shasum": ""
       },
       "require": {
@@ -240,19 +251,23 @@
       },
       "type": "library",
       "extra": {
-        "branch-alias": {
-          "dev-main": "3.5-dev"
-        },
         "thanks": {
-          "name": "symfony/contracts",
-          "url": "https://github.com/symfony/contracts"
+          "url": "https://github.com/symfony/contracts",
+          "name": "symfony/contracts"
+        },
+        "branch-alias": {
+          "dev-main": "3.6-dev"
         }
       },
       "autoload": {
-        "files": ["function.php"]
+        "files": [
+          "function.php"
+        ]
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Nicolas Grekas",
@@ -266,7 +281,7 @@
       "description": "A generic function and convention to trigger deprecation notices",
       "homepage": "https://symfony.com",
       "support": {
-        "source": "https://github.com/symfony/deprecation-contracts/tree/v3.5.0"
+        "source": "https://github.com/symfony/deprecation-contracts/tree/v3.6.0"
       },
       "funding": [
         {
@@ -282,24 +297,24 @@
           "type": "tidelift"
         }
       ],
-      "time": "2024-04-18T09:32:20+00:00"
+      "time": "2024-09-25T14:21:43+00:00"
     },
     {
       "name": "symfony/polyfill-ctype",
-      "version": "v1.30.0",
+      "version": "v1.33.0",
       "source": {
         "type": "git",
         "url": "https://github.com/symfony/polyfill-ctype.git",
-        "reference": "0424dff1c58f028c451efff2045f5d92410bd540"
+        "reference": "a3cc8b044a6ea513310cbd48ef7333b384945638"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/0424dff1c58f028c451efff2045f5d92410bd540",
-        "reference": "0424dff1c58f028c451efff2045f5d92410bd540",
+        "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/a3cc8b044a6ea513310cbd48ef7333b384945638",
+        "reference": "a3cc8b044a6ea513310cbd48ef7333b384945638",
         "shasum": ""
       },
       "require": {
-        "php": ">=7.1"
+        "php": ">=7.2"
       },
       "provide": {
         "ext-ctype": "*"
@@ -310,18 +325,22 @@
       "type": "library",
       "extra": {
         "thanks": {
-          "name": "symfony/polyfill",
-          "url": "https://github.com/symfony/polyfill"
+          "url": "https://github.com/symfony/polyfill",
+          "name": "symfony/polyfill"
         }
       },
       "autoload": {
-        "files": ["bootstrap.php"],
+        "files": [
+          "bootstrap.php"
+        ],
         "psr-4": {
           "Symfony\\Polyfill\\Ctype\\": ""
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Gert de Pagter",
@@ -334,9 +353,14 @@
       ],
       "description": "Symfony polyfill for ctype functions",
       "homepage": "https://symfony.com",
-      "keywords": ["compatibility", "ctype", "polyfill", "portable"],
+      "keywords": [
+        "compatibility",
+        "ctype",
+        "polyfill",
+        "portable"
+      ],
       "support": {
-        "source": "https://github.com/symfony/polyfill-ctype/tree/v1.30.0"
+        "source": "https://github.com/symfony/polyfill-ctype/tree/v1.33.0"
       },
       "funding": [
         {
@@ -348,28 +372,33 @@
           "type": "github"
         },
         {
+          "url": "https://github.com/nicolas-grekas",
+          "type": "github"
+        },
+        {
           "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
           "type": "tidelift"
         }
       ],
-      "time": "2024-05-31T15:07:36+00:00"
+      "time": "2024-09-09T11:45:10+00:00"
     },
     {
       "name": "symfony/polyfill-mbstring",
-      "version": "v1.30.0",
+      "version": "v1.33.0",
       "source": {
         "type": "git",
         "url": "https://github.com/symfony/polyfill-mbstring.git",
-        "reference": "fd22ab50000ef01661e2a31d850ebaa297f8e03c"
+        "reference": "6d857f4d76bd4b343eac26d6b539585d2bc56493"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fd22ab50000ef01661e2a31d850ebaa297f8e03c",
-        "reference": "fd22ab50000ef01661e2a31d850ebaa297f8e03c",
+        "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/6d857f4d76bd4b343eac26d6b539585d2bc56493",
+        "reference": "6d857f4d76bd4b343eac26d6b539585d2bc56493",
         "shasum": ""
       },
       "require": {
-        "php": ">=7.1"
+        "ext-iconv": "*",
+        "php": ">=7.2"
       },
       "provide": {
         "ext-mbstring": "*"
@@ -380,18 +409,22 @@
       "type": "library",
       "extra": {
         "thanks": {
-          "name": "symfony/polyfill",
-          "url": "https://github.com/symfony/polyfill"
+          "url": "https://github.com/symfony/polyfill",
+          "name": "symfony/polyfill"
         }
       },
       "autoload": {
-        "files": ["bootstrap.php"],
+        "files": [
+          "bootstrap.php"
+        ],
         "psr-4": {
           "Symfony\\Polyfill\\Mbstring\\": ""
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Nicolas Grekas",
@@ -404,9 +437,15 @@
       ],
       "description": "Symfony polyfill for the Mbstring extension",
       "homepage": "https://symfony.com",
-      "keywords": ["compatibility", "mbstring", "polyfill", "portable", "shim"],
+      "keywords": [
+        "compatibility",
+        "mbstring",
+        "polyfill",
+        "portable",
+        "shim"
+      ],
       "support": {
-        "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.30.0"
+        "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.33.0"
       },
       "funding": [
         {
@@ -418,72 +457,7 @@
           "type": "github"
         },
         {
-          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-          "type": "tidelift"
-        }
-      ],
-      "time": "2024-06-19T12:30:46+00:00"
-    },
-    {
-      "name": "symfony/polyfill-php80",
-      "version": "v1.30.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/symfony/polyfill-php80.git",
-        "reference": "77fa7995ac1b21ab60769b7323d600a991a90433"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/77fa7995ac1b21ab60769b7323d600a991a90433",
-        "reference": "77fa7995ac1b21ab60769b7323d600a991a90433",
-        "shasum": ""
-      },
-      "require": {
-        "php": ">=7.1"
-      },
-      "type": "library",
-      "extra": {
-        "thanks": {
-          "name": "symfony/polyfill",
-          "url": "https://github.com/symfony/polyfill"
-        }
-      },
-      "autoload": {
-        "files": ["bootstrap.php"],
-        "psr-4": {
-          "Symfony\\Polyfill\\Php80\\": ""
-        },
-        "classmap": ["Resources/stubs"]
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
-      "authors": [
-        {
-          "name": "Ion Bazan",
-          "email": "ion.bazan@gmail.com"
-        },
-        {
-          "name": "Nicolas Grekas",
-          "email": "p@tchwork.com"
-        },
-        {
-          "name": "Symfony Community",
-          "homepage": "https://symfony.com/contributors"
-        }
-      ],
-      "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
-      "homepage": "https://symfony.com",
-      "keywords": ["compatibility", "polyfill", "portable", "shim"],
-      "support": {
-        "source": "https://github.com/symfony/polyfill-php80/tree/v1.30.0"
-      },
-      "funding": [
-        {
-          "url": "https://symfony.com/sponsor",
-          "type": "custom"
-        },
-        {
-          "url": "https://github.com/fabpot",
+          "url": "https://github.com/nicolas-grekas",
           "type": "github"
         },
         {
@@ -491,25 +465,25 @@
           "type": "tidelift"
         }
       ],
-      "time": "2024-05-31T15:07:36+00:00"
+      "time": "2024-12-23T08:48:59+00:00"
     },
     {
       "name": "timber/timber",
-      "version": "v2.2.0",
+      "version": "v2.3.2",
       "source": {
         "type": "git",
         "url": "https://github.com/timber/timber.git",
-        "reference": "5fc65f235323e8119fddc3cadbfef39ec97a663a"
+        "reference": "08ce601167a03ed7a4fa7da740481c17ed650ef0"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/timber/timber/zipball/5fc65f235323e8119fddc3cadbfef39ec97a663a",
-        "reference": "5fc65f235323e8119fddc3cadbfef39ec97a663a",
+        "url": "https://api.github.com/repos/timber/timber/zipball/08ce601167a03ed7a4fa7da740481c17ed650ef0",
+        "reference": "08ce601167a03ed7a4fa7da740481c17ed650ef0",
         "shasum": ""
       },
       "require": {
         "php": "^8.1",
-        "twig/twig": "^3.5"
+        "twig/twig": "^3.19"
       },
       "require-dev": {
         "ergebnis/composer-normalize": "^2.28",
@@ -522,9 +496,9 @@
         "phpunit/phpunit": "^9.0",
         "rector/rector": "^1.0",
         "squizlabs/php_codesniffer": "^3.0",
-        "symplify/easy-coding-standard": "^12.0",
+        "symplify/easy-coding-standard": "^12.2",
         "szepeviktor/phpstan-wordpress": "^1.1",
-        "twig/cache-extra": "^3.3",
+        "twig/cache-extra": "^3.17",
         "wpackagist-plugin/advanced-custom-fields": "^6.0",
         "wpackagist-plugin/co-authors-plus": "^3.6",
         "yoast/wp-test-utils": "^1.2"
@@ -540,7 +514,9 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Erik van der Bas",
@@ -569,7 +545,13 @@
       ],
       "description": "Create WordPress themes with beautiful OOP code and the Twig Template Engine",
       "homepage": "https://timber.upstatement.com",
-      "keywords": ["templating", "themes", "timber", "twig", "wordpress"],
+      "keywords": [
+        "templating",
+        "themes",
+        "timber",
+        "twig",
+        "wordpress"
+      ],
       "support": {
         "docs": "https://timber.github.io/docs/",
         "issues": "https://github.com/timber/timber/issues",
@@ -577,34 +559,38 @@
       },
       "funding": [
         {
+          "url": "https://github.com/timber",
+          "type": "github"
+        },
+        {
           "url": "https://opencollective.com/timber",
           "type": "open_collective"
         }
       ],
-      "time": "2024-05-15T13:47:33+00:00"
+      "time": "2025-05-13T13:41:56+00:00"
     },
     {
       "name": "twig/twig",
-      "version": "v3.10.3",
+      "version": "v3.21.1",
       "source": {
         "type": "git",
         "url": "https://github.com/twigphp/Twig.git",
-        "reference": "67f29781ffafa520b0bbfbd8384674b42db04572"
+        "reference": "285123877d4dd97dd7c11842ac5fb7e86e60d81d"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/twigphp/Twig/zipball/67f29781ffafa520b0bbfbd8384674b42db04572",
-        "reference": "67f29781ffafa520b0bbfbd8384674b42db04572",
+        "url": "https://api.github.com/repos/twigphp/Twig/zipball/285123877d4dd97dd7c11842ac5fb7e86e60d81d",
+        "reference": "285123877d4dd97dd7c11842ac5fb7e86e60d81d",
         "shasum": ""
       },
       "require": {
-        "php": ">=7.2.5",
+        "php": ">=8.1.0",
         "symfony/deprecation-contracts": "^2.5|^3",
         "symfony/polyfill-ctype": "^1.8",
-        "symfony/polyfill-mbstring": "^1.3",
-        "symfony/polyfill-php80": "^1.22"
+        "symfony/polyfill-mbstring": "^1.3"
       },
       "require-dev": {
+        "phpstan/phpstan": "^2.0",
         "psr/container": "^1.0|^2.0",
         "symfony/phpunit-bridge": "^5.4.9|^6.4|^7.0"
       },
@@ -621,7 +607,9 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["BSD-3-Clause"],
+      "license": [
+        "BSD-3-Clause"
+      ],
       "authors": [
         {
           "name": "Fabien Potencier",
@@ -641,10 +629,12 @@
       ],
       "description": "Twig, the flexible, fast, and secure template language for PHP",
       "homepage": "https://twig.symfony.com",
-      "keywords": ["templating"],
+      "keywords": [
+        "templating"
+      ],
       "support": {
         "issues": "https://github.com/twigphp/Twig/issues",
-        "source": "https://github.com/twigphp/Twig/tree/v3.10.3"
+        "source": "https://github.com/twigphp/Twig/tree/v3.21.1"
       },
       "funding": [
         {
@@ -656,11 +646,11 @@
           "type": "tidelift"
         }
       ],
-      "time": "2024-05-16T10:04:27+00:00"
+      "time": "2025-05-03T07:21:55+00:00"
     },
     {
       "name": "wpackagist-plugin/duplicate-page",
-      "version": "4.5.3",
+      "version": "4.5.5",
       "source": {
         "type": "svn",
         "url": "https://plugins.svn.wordpress.org/duplicate-page/",
@@ -668,7 +658,7 @@
       },
       "dist": {
         "type": "zip",
-        "url": "https://downloads.wordpress.org/plugin/duplicate-page.zip?timestamp=1694416817"
+        "url": "https://downloads.wordpress.org/plugin/duplicate-page.zip?timestamp=1749804792"
       },
       "require": {
         "composer/installers": "^1.0 || ^2.0"
@@ -678,16 +668,17 @@
     },
     {
       "name": "wpengine/advanced-custom-fields-pro",
-      "version": "6.3.3",
+      "version": "6.5.1",
       "dist": {
         "type": "zip",
-        "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?p=pro&t=6.3.3"
+        "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?s=composer&p=pro&t=6.5.1"
       },
       "require": {
         "composer/installers": "~1.0 || ~2.0"
       },
       "replace": {
-        "wpackagist-plugin/advanced-custom-fields": "self.version"
+        "wpackagist-plugin/advanced-custom-fields": "self.version",
+        "wpengine/advanced-custom-fields": "self.version"
       },
       "type": "wordpress-plugin"
     }
@@ -712,13 +703,17 @@
       },
       "type": "library",
       "autoload": {
-        "files": ["functions.php"],
+        "files": [
+          "functions.php"
+        ],
         "psr-4": {
           "HelloNico\\Timber\\": "src/"
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["GPL-3.0+"],
+      "license": [
+        "GPL-3.0+"
+      ],
       "authors": [
         {
           "name": "Nicolas Lemoine",
@@ -759,7 +754,9 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["GPL-3.0+"],
+      "license": [
+        "GPL-3.0+"
+      ],
       "authors": [
         {
           "name": "Nicolas Lemoine",
@@ -778,16 +775,16 @@
     },
     {
       "name": "psr/log",
-      "version": "3.0.0",
+      "version": "3.0.2",
       "source": {
         "type": "git",
         "url": "https://github.com/php-fig/log.git",
-        "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001"
+        "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/php-fig/log/zipball/fe5ea303b0887d5caefd3d431c3e61ad47037001",
-        "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001",
+        "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+        "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
         "shasum": ""
       },
       "require": {
@@ -805,7 +802,9 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -814,11 +813,15 @@
       ],
       "description": "Common interface for logging libraries",
       "homepage": "https://github.com/php-fig/log",
-      "keywords": ["log", "psr", "psr-3"],
+      "keywords": [
+        "log",
+        "psr",
+        "psr-3"
+      ],
       "support": {
-        "source": "https://github.com/php-fig/log/tree/3.0.0"
+        "source": "https://github.com/php-fig/log/tree/3.0.2"
       },
-      "time": "2021-07-14T16:46:02+00:00"
+      "time": "2024-09-11T13:17:53+00:00"
     },
     {
       "name": "symfony/debug",
@@ -849,10 +852,14 @@
         "psr-4": {
           "Symfony\\Component\\Debug\\": ""
         },
-        "exclude-from-classmap": ["/Tests/"]
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Fabien Potencier",
@@ -887,16 +894,16 @@
     },
     {
       "name": "symfony/var-dumper",
-      "version": "v6.4.9",
+      "version": "v6.4.25",
       "source": {
         "type": "git",
         "url": "https://github.com/symfony/var-dumper.git",
-        "reference": "c31566e4ca944271cc8d8ac6887cbf31b8c6a172"
+        "reference": "c6cd92486e9fc32506370822c57bc02353a5a92c"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/symfony/var-dumper/zipball/c31566e4ca944271cc8d8ac6887cbf31b8c6a172",
-        "reference": "c31566e4ca944271cc8d8ac6887cbf31b8c6a172",
+        "url": "https://api.github.com/repos/symfony/var-dumper/zipball/c6cd92486e9fc32506370822c57bc02353a5a92c",
+        "reference": "c6cd92486e9fc32506370822c57bc02353a5a92c",
         "shasum": ""
       },
       "require": {
@@ -908,7 +915,6 @@
         "symfony/console": "<5.4"
       },
       "require-dev": {
-        "ext-iconv": "*",
         "symfony/console": "^5.4|^6.0|^7.0",
         "symfony/error-handler": "^6.3|^7.0",
         "symfony/http-kernel": "^5.4|^6.0|^7.0",
@@ -916,17 +922,25 @@
         "symfony/uid": "^5.4|^6.0|^7.0",
         "twig/twig": "^2.13|^3.0.4"
       },
-      "bin": ["Resources/bin/var-dump-server"],
+      "bin": [
+        "Resources/bin/var-dump-server"
+      ],
       "type": "library",
       "autoload": {
-        "files": ["Resources/functions/dump.php"],
+        "files": [
+          "Resources/functions/dump.php"
+        ],
         "psr-4": {
           "Symfony\\Component\\VarDumper\\": ""
         },
-        "exclude-from-classmap": ["/Tests/"]
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Nicolas Grekas",
@@ -939,9 +953,12 @@
       ],
       "description": "Provides mechanisms for walking through any arbitrary PHP variable",
       "homepage": "https://symfony.com",
-      "keywords": ["debug", "dump"],
+      "keywords": [
+        "debug",
+        "dump"
+      ],
       "support": {
-        "source": "https://github.com/symfony/var-dumper/tree/v6.4.9"
+        "source": "https://github.com/symfony/var-dumper/tree/v6.4.25"
       },
       "funding": [
         {
@@ -953,11 +970,15 @@
           "type": "github"
         },
         {
+          "url": "https://github.com/nicolas-grekas",
+          "type": "github"
+        },
+        {
           "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
           "type": "tidelift"
         }
       ],
-      "time": "2024-06-27T13:23:14+00:00"
+      "time": "2025-08-13T09:41:44+00:00"
     }
   ],
   "aliases": [],
