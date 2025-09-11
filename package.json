@@ -34,9 +34,6 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "overrides": {
-    "conventional-changelog-conventionalcommits": "8.0.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/eslint-parser": "^7.26.8",
