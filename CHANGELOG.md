@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.1](https://github.com/RichForever/TimberTail/compare/1.4.0...1.4.1) (2025-09-19)
+
+### 🏗 Build System
+
+* remove commitlint from husky ([0a4c001](https://github.com/RichForever/TimberTail/commit/0a4c0015b33d40fde7a2bf1655e4f5dc11334207))
+
 ## [1.4.0](https://github.com/RichForever/TimberTail/compare/1.3.2...1.4.0) (2025-09-11)
 
 ### 🚀 Features
