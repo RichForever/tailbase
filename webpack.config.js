@@ -7,7 +7,6 @@ const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const { WebpackAssetsManifest } = require("webpack-assets-manifest");
 const { EsbuildPlugin } = require('esbuild-loader')
-const ProgressPlugin = require('progress-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
@@ -18,13 +17,13 @@ const config = {
   blocks: "./blocks",
   src: {
     main: './src/',
-    scripts: './src/js',
-    styles: './src/scss',
+    scripts: './src/scripts',
+    styles: './src/styles',
     images: './src/images',
     fonts: './src/fonts',
   },
-  dist: {
-    main: './dist',
+  build: {
+    main: './build',
     images: '',
     fonts: '',
   }
@@ -33,26 +32,23 @@ const config = {
 module.exports = {
   mode: isProduction ? "production" : "development",
   entry: {
+	"app-styles": config.src.styles + "/app.css",
     "app-scripts": config.src.scripts + "/app.js",
-    "blocks": config.src.scripts + "/blocks.js",
+    "theme-styles": config.src.styles + "/theme.css",
+    "editor-styles": config.src.styles + "/editor.css",
     "twig": config.src.scripts + "/twig.js",
-    "editor-scripts": config.src.scripts + "/editor-scripts.js",
-    "app-styles": config.src.styles + "/app.scss",
-    "theme": config.src.styles + "/theme.scss",
-    "editor-styles": config.src.styles + "/editor-styles.scss",
   },
   output: {
-    path: path.resolve(__dirname, config.dist.main),
+    path: path.resolve(__dirname, config.build.main),
     filename: isProduction ? "[name].[chunkhash:8].js" : "[name].js",
     chunkFilename: isProduction ? "[name].[chunkhash:8].js" : "[name].js",
     clean: true,
   },
   devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
   plugins: [
-    new ProgressPlugin(),
     new RemoveEmptyScriptsPlugin(),
     new WebpackAssetsManifest({
-      output: path.resolve(__dirname, config.dist.main + "/manifest.json"),
+      output: path.resolve(__dirname, config.build.main + "/manifest.json"),
       customize(entry, original, manifest, asset) {
         const pattern = /\.(js|css)$/i;
         if (!pattern.test(entry.key)) {
@@ -89,20 +85,6 @@ module.exports = {
             target: 'es2015'
           }
         }
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true
-            }
-          }
-        ],
       },
       {
         test: /\.css$/i,

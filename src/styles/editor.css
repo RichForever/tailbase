@@ -1,0 +1,8 @@
+@import "app.css";
+@import "base/index.css";
+
+.editor-styles-wrapper {
+  h1.wp-block-post-title {
+    @apply mx-auto mb-12 text-4xl font-bold;
+  }
+}

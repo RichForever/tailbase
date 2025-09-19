@@ -20,6 +20,7 @@ class TimberTail extends Timber\Site
         add_filter("timber/twig", [$this, "add_to_twig"]);
         add_filter("timber/twig", [$this, "support_polylang_functions"]);
         add_action("wp_enqueue_scripts", [$this, "enqueue_scripts"]);
+		add_action("after_setup_theme", [$this, "enqueue_editor_styles"]);
         add_action("after_setup_theme", [$this, "theme_supports"]);
         add_action("after_setup_theme", [$this, "remove_header_actions"]);
         add_action("after_setup_theme", [$this, "vendor_settings"]);
@@ -90,6 +91,11 @@ class TimberTail extends Timber\Site
     {
         require_once "lib/enqueue-scripts.php";
     }
+
+    public function enqueue_editor_styles()
+    {
+        require_once "lib/enqueue-editor-styles.php";
+    }	
 
     public function register_images()
     {
