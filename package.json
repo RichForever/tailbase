@@ -17,7 +17,7 @@
     "build:dev": "webpack --mode=development",
     "commit": "cz",
     "dev": "webpack",
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "npx only-allow npm",
     "prepare": "husky",
     "prettier:check": "npx prettier . --check",
     "prettier:write": "npx prettier . --write",
