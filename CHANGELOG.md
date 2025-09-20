@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.2](https://github.com/RichForever/TimberTail/compare/1.4.1...1.4.2) (2025-09-20)
+
+### 🏗 Build System
+
+* switch back to npm ([059005b](https://github.com/RichForever/TimberTail/commit/059005bd739c4b6ecc8df34059057595bdf834f3))
+
 ## [1.4.1](https://github.com/RichForever/TimberTail/compare/1.4.0...1.4.1) (2025-09-19)
 
 ### 🏗 Build System
