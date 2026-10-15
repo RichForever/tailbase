@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.2](https://github.com/RichForever/Tailbase/compare/1.5.1...1.5.2) (2026-10-15)
+
+### 🏗 Build System
+
+* fix sample config files ([7cd5dd6](https://github.com/RichForever/Tailbase/commit/7cd5dd62f5cbfb6a59f0bd591c503859ad45c582))
+
 ## [1.5.1](https://github.com/RichForever/Tailbase/compare/1.5.0...1.5.1) (2026-10-15)
 
 ### 📝 Documentation
