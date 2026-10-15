@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.5.1](https://github.com/RichForever/Tailbase/compare/1.5.0...1.5.1) (2026-10-15)
+
+### 📝 Documentation
+
+* add readme file, change screenshot ([1860956](https://github.com/RichForever/Tailbase/commit/1860956e713efadc0bfa34ec3125443c272c3b68))
+
+### ♻️ Refactoring
+
+* update styles ([f08b081](https://github.com/RichForever/Tailbase/commit/f08b081d7f6f5a1f00943b356e6a9a594db58b48))
+
+### 📦 Miscellaneous
+
+* update config files ([3e15056](https://github.com/RichForever/Tailbase/commit/3e1505670cb06e02597b668d65c16cfca9e95299))
+* update config files ([28f8f72](https://github.com/RichForever/Tailbase/commit/28f8f7216d3f9058f354ae858a175373f4bc949c))
+
 ## [1.5.0](https://github.com/RichForever/Tailbase/compare/1.4.2...1.5.0) (2026-10-15)
 
 ### 🚀 Features
