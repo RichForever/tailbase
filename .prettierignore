@@ -1,8 +1,6 @@
-acf-json
 auth.json
 webpack.config.js
-tailwind.theme.config.js
-tailwind.config.js
 node_modules
 build
 dist
+src/styles/tokens.css

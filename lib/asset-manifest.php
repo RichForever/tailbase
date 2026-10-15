@@ -1,9 +1,10 @@
 <?php
 /**
- * Resolve a built asset (e.g. "app-styles.css") to its hashed file name
- * using the webpack manifest in /build.
+ * Resolve a built asset (e.g. "app-styles.css") to its hashed file using the
+ * webpack manifest in /build. tailbase_asset_path() returns the theme-relative
+ * path, tailbase_asset() the full URL.
  */
-function tailbase_asset($file)
+function tailbase_asset_path($file)
 {
     static $manifest;
 
@@ -23,5 +24,10 @@ function tailbase_asset($file)
         );
     }
 
-    return get_template_directory_uri() . "/build/" . $manifest[$file];
+    return "build/" . $manifest[$file];
+}
+
+function tailbase_asset($file)
+{
+    return get_template_directory_uri() . "/" . tailbase_asset_path($file);
 }

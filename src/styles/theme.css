@@ -1,5 +1,7 @@
-@import "base/index.css";
-@import "layout/index.css";
+@reference "./app.css";
+
+@import "./base/index.css" layer(base);
+@import "./layout/index.css";
 
 .screen-reader-text {
 	@apply sr-only;

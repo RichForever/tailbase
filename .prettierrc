@@ -4,5 +4,5 @@
     "prettier-plugin-packagejson",
     "@prettier/plugin-php"
   ],
-  "tailwindConfig": "./tailwind.config.js"
+  "tailwindStylesheet": "./src/styles/app.css"
 }

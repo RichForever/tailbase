@@ -27,8 +27,6 @@ export default [
         ignores: [
             "auth.json",
             "webpack.config.js",
-            "tailwind.theme.config.js",
-            "tailwind.config.js",
             "eslint.config.mjs",
             "node_modules",
             "build",
