@@ -2,11 +2,9 @@ import themeConfig from './tailwind.theme.config'
 
 module.exports = {
     content: [
-        "./blocks/**/*.{php,twig,html,js}",
         "./lib/**/*.php",
         "./src/**/*.js",
-        "./views/**/*.twig",
-        "./*.{php,twig,html}"
+        "./*.php"
     ],
     theme: {
         extend: {

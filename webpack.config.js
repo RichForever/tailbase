@@ -14,7 +14,6 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
-  blocks: "./blocks",
   src: {
     main: './src/',
     scripts: './src/scripts',
@@ -36,7 +35,6 @@ module.exports = {
     "app-scripts": config.src.scripts + "/app.js",
     "theme-styles": config.src.styles + "/theme.css",
     "editor-styles": config.src.styles + "/editor.css",
-    "twig": config.src.scripts + "/twig.js",
   },
   output: {
     path: path.resolve(__dirname, config.build.main),
@@ -65,7 +63,6 @@ module.exports = {
       port: 3000,
       proxy: 'http://dev.site',
       files: [
-          "./**/*.twig",
           "./**/*.php",
           "./**/*.scss",
           "./**/*.css",
@@ -112,7 +109,6 @@ module.exports = {
     alias: {
       images: path.join(__dirname, config.src.images),
       fonts: path.join(__dirname, config.src.fonts),
-      blocks: path.join(__dirname, config.blocks),
     },
   },
   optimization: {

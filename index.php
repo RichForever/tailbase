@@ -2,13 +2,17 @@
 
 /**
  * @package WordPress
- * @subpackage TimberTail
- * @since TimberTail 1.0.0
+ * @subpackage Tailbase
+ * @since Tailbase 1.0.0
  */
 
-$context = Timber::context();
-$templates = ["index.twig"];
-if (is_home()) {
-    array_unshift($templates, "front-page.twig", "home.twig");
-}
-Timber::render($templates, $context);
+get_header();
+?>
+
+<main class="container mx-auto">
+  <?php while (have_posts()): the_post(); ?>
+    <?php the_content(); ?>
+  <?php endwhile; ?>
+</main>
+
+<?php get_footer(); ?>

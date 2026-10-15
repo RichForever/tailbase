@@ -25,7 +25,6 @@ export default [
     },
     {
         ignores: [
-            "acf-json",
             "auth.json",
             "webpack.config.js",
             "tailwind.theme.config.js",

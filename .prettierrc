@@ -2,7 +2,6 @@
   "plugins": [
     "prettier-plugin-tailwindcss",
     "prettier-plugin-packagejson",
-    "@destination/prettier-plugin-twig",
     "@prettier/plugin-php"
   ],
   "tailwindConfig": "./tailwind.config.js"

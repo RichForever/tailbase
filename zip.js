@@ -46,7 +46,7 @@ archive.on("error", function (err) {
 archive.pipe(output);
 
 // List of directories to include in the zip
-const directories = ["acf-json", "assets", "blocks", "lib", "dist", "views"];
+const directories = ["assets", "lib", "dist"];
 
 // Append directories with theme name prefix
 directories.forEach((dir) => {
@@ -55,11 +55,7 @@ directories.forEach((dir) => {
 
 // List of files to include in the zip
 const files = [
-  "404.php",
-  "archive.php",
   "auth.json",
-  "composer.json",
-  "composer.lock",
   "screenshot.png",
   "theme.json",
   "style.css", // Added this line

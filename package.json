@@ -1,13 +1,11 @@
 {
-  "name": "timbertail-theme",
+  "name": "tailbase-theme",
   "version": "1.4.2",
-  "description": "TimberTail Theme package.json file",
+  "description": "Tailbase Theme package.json file",
   "keywords": [
     "wordpress",
     "theme",
-    "tailwind",
-    "twig",
-    "acf"
+    "tailwind"
   ],
   "license": "ISC",
   "author": "",
@@ -38,7 +36,6 @@
     "@babel/core": "^7.21.0",
     "@babel/eslint-parser": "^7.26.8",
     "@babel/preset-env": "^7.20.2",
-    "@destination/prettier-plugin-twig": "^1.5.0",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.20.0",
     "@fullhuman/postcss-purgecss": "^7.0.2",
@@ -58,7 +55,6 @@
     "esbuild-loader": "^4.0.2",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-twig": "^0.1.5",
     "glob-all": "^3.3.1",
     "husky": "^9.1.7",
     "image-minimizer-webpack-plugin": "^4.0.1",
