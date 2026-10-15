@@ -4,5 +4,5 @@
 @import "./layout/index.css";
 
 .screen-reader-text {
-	@apply sr-only;
+  @apply sr-only;
 }

@@ -191,184 +191,7 @@
     "spacing": {
       "blockGap": true,
       "margin": true,
-      "padding": true,
-      "spacingSizes": [
-        {
-          "name": "Zero",
-          "size": "0px",
-          "slug": "zero"
-        },
-        {
-          "name": "Px",
-          "size": "1px",
-          "slug": "px"
-        },
-        {
-          "name": "0.5",
-          "size": "0.125rem",
-          "slug": "0-5"
-        },
-        {
-          "name": "1",
-          "size": "0.25rem",
-          "slug": "1"
-        },
-        {
-          "name": "1.5",
-          "size": "0.375rem",
-          "slug": "1-5"
-        },
-        {
-          "name": "2",
-          "size": "0.5rem",
-          "slug": "2"
-        },
-        {
-          "name": "2.5",
-          "size": "0.625rem",
-          "slug": "2-5"
-        },
-        {
-          "name": "3",
-          "size": "0.75rem",
-          "slug": "3"
-        },
-        {
-          "name": "3.5",
-          "size": "0.875rem",
-          "slug": "3-5"
-        },
-        {
-          "name": "4",
-          "size": "1rem",
-          "slug": "4"
-        },
-        {
-          "name": "5",
-          "size": "1.25rem",
-          "slug": "5"
-        },
-        {
-          "name": "6",
-          "size": "1.5rem",
-          "slug": "6"
-        },
-        {
-          "name": "7",
-          "size": "1.75rem",
-          "slug": "7"
-        },
-        {
-          "name": "8",
-          "size": "2rem",
-          "slug": "8"
-        },
-        {
-          "name": "9",
-          "size": "2.25rem",
-          "slug": "9"
-        },
-        {
-          "name": "10",
-          "size": "2.5rem",
-          "slug": "10"
-        },
-        {
-          "name": "11",
-          "size": "2.75rem",
-          "slug": "11"
-        },
-        {
-          "name": "12",
-          "size": "3rem",
-          "slug": "12"
-        },
-        {
-          "name": "14",
-          "size": "3.5rem",
-          "slug": "14"
-        },
-        {
-          "name": "16",
-          "size": "4rem",
-          "slug": "16"
-        },
-        {
-          "name": "20",
-          "size": "5rem",
-          "slug": "20"
-        },
-        {
-          "name": "24",
-          "size": "6rem",
-          "slug": "24"
-        },
-        {
-          "name": "28",
-          "size": "7rem",
-          "slug": "28"
-        },
-        {
-          "name": "32",
-          "size": "8rem",
-          "slug": "32"
-        },
-        {
-          "name": "36",
-          "size": "9rem",
-          "slug": "36"
-        },
-        {
-          "name": "40",
-          "size": "10rem",
-          "slug": "40"
-        },
-        {
-          "name": "44",
-          "size": "11rem",
-          "slug": "44"
-        },
-        {
-          "name": "48",
-          "size": "12rem",
-          "slug": "48"
-        },
-        {
-          "name": "52",
-          "size": "13rem",
-          "slug": "52"
-        },
-        {
-          "name": "56",
-          "size": "14rem",
-          "slug": "56"
-        },
-        {
-          "name": "60",
-          "size": "15rem",
-          "slug": "60"
-        },
-        {
-          "name": "64",
-          "size": "16rem",
-          "slug": "64"
-        },
-        {
-          "name": "72",
-          "size": "18rem",
-          "slug": "72"
-        },
-        {
-          "name": "80",
-          "size": "20rem",
-          "slug": "80"
-        },
-        {
-          "name": "96",
-          "size": "24rem",
-          "slug": "96"
-        }
-      ]
+      "padding": true
     },
     "typography": {
       "fluid": false,
@@ -389,55 +212,68 @@
           "size": "1rem"
         },
         {
+          "name": "md",
+          "slug": "md",
+          "size": "1.25rem"
+        },
+        {
           "name": "lg",
           "slug": "lg",
-          "size": "1.25rem"
+          "size": "1.562rem"
         },
         {
           "name": "xl",
           "slug": "xl",
-          "size": "1.5rem"
+          "size": "1.938rem"
         },
         {
           "name": "2xl",
           "slug": "2xl",
-          "size": "1.5625rem"
+          "size": "2.438rem"
         },
         {
           "name": "3xl",
           "slug": "3xl",
-          "size": "1.9375rem"
+          "size": "3.062rem"
         },
         {
           "name": "4xl",
           "slug": "4xl",
-          "size": "2.4375rem"
+          "size": "3.812rem"
         },
         {
-          "name": "5xl",
-          "slug": "5xl",
-          "size": "2.625rem"
+          "name": "fluid-lg",
+          "slug": "fluid-lg",
+          "size": "clamp(1.25rem, 1.146rem + 0.52vw, 1.562rem)"
         },
         {
-          "name": "6xl",
-          "slug": "6xl",
-          "size": "3.0625rem"
+          "name": "fluid-xl",
+          "slug": "fluid-xl",
+          "size": "clamp(1.562rem, 1.437rem + 0.627vw, 1.938rem)"
         },
         {
-          "name": "7xl",
-          "slug": "7xl",
-          "size": "3.8125rem"
+          "name": "fluid-2xl",
+          "slug": "fluid-2xl",
+          "size": "clamp(1.938rem, 1.771rem + 0.833vw, 2.438rem)"
         },
         {
-          "name": "8xl",
-          "slug": "8xl",
-          "size": "4rem"
+          "name": "fluid-3xl",
+          "slug": "fluid-3xl",
+          "size": "clamp(2.438rem, 2.23rem + 1.04vw, 3.062rem)"
+        },
+        {
+          "name": "fluid-4xl",
+          "slug": "fluid-4xl",
+          "size": "clamp(3.062rem, 2.812rem + 1.25vw, 3.812rem)"
+        }
+      ],
+      "fontFamilies": [
+        {
+          "name": "Inter",
+          "slug": "sans",
+          "fontFamily": "\"Inter\", ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
         }
       ]
-    },
-    "layout": {
-      "contentSize": "1536px",
-      "wideSize": "1100px"
     }
   }
 }

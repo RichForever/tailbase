@@ -1,78 +1,74 @@
+// Packages the theme into dist/<theme>-<version>.zip, ready to upload to WordPress.
+// Run `npm run zip` (it builds first). Only the files listed below are included.
 const fs = require("fs");
-const archiver = require("archiver");
 const path = require("path");
+const archiver = require("archiver");
 
-// Define the theme name
-const themeName = path.basename(__dirname);
+const root = path.resolve(__dirname, "..");
+const themeName = path.basename(root);
+const { version } = require(path.join(root, "package.json"));
 
-// Ensure the build directory exists
-const buildDir = path.join(__dirname, "build");
-if (!fs.existsSync(buildDir)) {
-  fs.mkdirSync(buildDir);
+const outDir = path.join(root, "dist");
+const outFile = path.join(outDir, `${themeName}-${version}.zip`);
+
+// Directories to include (source maps are left out).
+const directories = ["assets", "lib", "build"];
+
+// Files to include, in addition to every .php file in the theme root.
+const files = ["style.css", "theme.json", "screenshot.png"];
+
+const rootPhpFiles = fs
+  .readdirSync(root)
+  .filter((file) => file.endsWith(".php"));
+
+// Fail early instead of shipping an incomplete theme.
+const required = [
+  ...directories,
+  ...files,
+  "build/manifest.json",
+  "functions.php",
+];
+const missing = required.filter(
+  (item) => !fs.existsSync(path.join(root, item)),
+);
+if (missing.length) {
+  console.error(
+    `Cannot create the zip, missing: ${missing.join(", ")}\n` +
+      "Run `npm run zip` (it runs the build first).",
+  );
+  process.exit(1);
 }
 
-// Specify the output file name and path
-const output = fs.createWriteStream(
-  path.join(buildDir, `${themeName}-theme.zip`),
-);
-const archive = archiver("zip", {
-  zlib: { level: 9 }, // Compression level
-});
+fs.mkdirSync(outDir, { recursive: true });
+const output = fs.createWriteStream(outFile);
+const archive = archiver("zip", { zlib: { level: 9 } });
 
-// Handle output events
-output.on("close", function () {
-  console.log(archive.pointer() + " total bytes");
+output.on("close", () => {
   console.log(
-    "archiver has been finalized and the output file descriptor has closed.",
+    `${path.relative(root, outFile)} (${(archive.pointer() / 1024).toFixed(1)} KiB)`,
   );
 });
 
-output.on("end", function () {
-  console.log("Data has been drained");
+archive.on("warning", (err) => {
+  throw err;
 });
-
-archive.on("warning", function (err) {
-  if (err.code !== "ENOENT") {
-    throw err;
-  }
-  console.warn(err);
-});
-
-archive.on("error", function (err) {
+archive.on("error", (err) => {
   throw err;
 });
 
-// Pipe the archive data to the file
 archive.pipe(output);
 
-// List of directories to include in the zip
-const directories = ["assets", "lib", "dist"];
-
-// Append directories with theme name prefix
+// Everything is placed inside a top-level folder named after the theme.
 directories.forEach((dir) => {
-  archive.directory(dir, `${themeName}/${dir}`);
+  archive.glob(
+    "**/*",
+    { cwd: path.join(root, dir), ignore: ["**/*.map"] },
+    { prefix: `${themeName}/${dir}` },
+  );
 });
 
-// List of files to include in the zip
-const files = [
-  "auth.json",
-  "screenshot.png",
-  "theme.json",
-  "style.css", // Added this line
-  // Add other standard WordPress files here
-];
-
-// Append files with theme name prefix
-files.forEach((file) => {
-  archive.file(file, { name: `${themeName}/${file}` });
+[...files, ...rootPhpFiles].forEach((file) => {
+  archive.file(path.join(root, file), { name: `${themeName}/${file}` });
 });
 
-// Append all PHP files in the root directory with theme name prefix
-fs.readdirSync(__dirname).forEach((file) => {
-  if (file.endsWith(".php") && !files.includes(file)) {
-    archive.file(file, { name: `${themeName}/${file}` });
-  }
-});
-
-// Finalize the archive (i.e. we are done appending files but streams have to finish yet)
 archive.finalize();
