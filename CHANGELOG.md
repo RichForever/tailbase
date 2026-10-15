@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.0](https://github.com/RichForever/Tailbase/compare/1.4.2...1.5.0) (2026-10-15)
+
+### 🚀 Features
+
+* rename theme, remove Twig/Timber ([833e420](https://github.com/RichForever/Tailbase/commit/833e4202156dc477eeba116214447a9b88492014))
+
 ## [1.4.2](https://github.com/RichForever/TimberTail/compare/1.4.1...1.4.2) (2025-09-20)
 
 ### 🏗 Build System
