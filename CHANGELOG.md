@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.6](https://github.com/RichForever/tailbase/compare/1.5.5...1.5.6) (2026-10-16)
+
+### ♻️ Refactoring
+
+* add meta description metabox ([a909749](https://github.com/RichForever/tailbase/commit/a909749b47c52b18fa0b0fccba05bc803e9c61a3))
+
 ## [1.5.5](https://github.com/RichForever/tailbase/compare/1.5.4...1.5.5) (2026-10-16)
 
 ### ♻️ Refactoring
