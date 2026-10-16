@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.5](https://github.com/RichForever/tailbase/compare/1.5.4...1.5.5) (2026-10-16)
+
+### ♻️ Refactoring
+
+* update ([ee80fff](https://github.com/RichForever/tailbase/commit/ee80fff39e5dedeeea64c61a462c62a4f3b7dc63))
+
 ## [1.5.4](https://github.com/RichForever/Tailbase/compare/1.5.3...1.5.4) (2026-10-16)
 
 ### 🏗 Build System
