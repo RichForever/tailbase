@@ -47,15 +47,23 @@ services:
       - db
 
     container_name: phpapache-${PROJECT}
-    #    image: php:8.0-apache
     environment:
       APACHE_DOCUMENT_ROOT: /var/www/html/
     volumes:
       - ./:/var/www/html/
+      - ../certs/_wildcard.projects.local.pem:/etc/ssl/certs/projects.local.crt
+      - ../certs/_wildcard.projects.local-key.pem:/etc/ssl/private/projects.local.key  
+      - ../certs/_wildcard.projects.local.pem:/usr/local/share/ca-certificates/projects.local.crt     
     ports:
       - 80:80
+      - 443:443
     networks:
       - wpsite
+    command: >
+      sh -c "
+        update-ca-certificates &&
+        apache2-foreground
+      "      
 
   wp-cli:
     container_name: wp-cli-${PROJECT}
@@ -70,7 +78,7 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_NAME: wordpress 
     networks:
       - wpsite
 
