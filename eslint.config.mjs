@@ -1,9 +1,7 @@
-import importPlugin from "eslint-plugin-import"; // Import rules
 import js from "@eslint/js"; // ES6+ JavaScript
 import babelParser from "@babel/eslint-parser";
 export default [
   js.configs.recommended,
-  importPlugin.flatConfigs.recommended,
   {
     rules: {
       "no-undef": "off",
