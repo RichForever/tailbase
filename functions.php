@@ -13,6 +13,7 @@ $tailbase_modules = [
     "head-cleanup",
     "icons",
     "image-sizes",
+    "meta-description",
     "nav-menus",
     "plugin-compat",
     "post-types",
