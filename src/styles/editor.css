@@ -5,9 +5,7 @@
    which beats the Tailwind base layer. The base styles above are imported without
    a layer for the same reason, and the wrapper font is restored here. */
 .editor-styles-wrapper {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  line-height: 1.5;
+  @apply mx-auto my-0 max-w-480 px-6 [font-family:var(--font-sans)] [font-size:var(--text-base)] leading-normal;
 
   h1.wp-block-post-title {
     @apply mx-auto mb-12 text-fluid-4xl font-bold;
