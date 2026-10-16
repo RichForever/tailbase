@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.4](https://github.com/RichForever/Tailbase/compare/1.5.3...1.5.4) (2026-10-16)
+
+### 🏗 Build System
+
+* disable github release ([deb1032](https://github.com/RichForever/Tailbase/commit/deb103230d464808bf7b4f67473eed9f0df9c8e1))
+
 ## [1.5.3](https://github.com/RichForever/Tailbase/compare/1.5.2...1.5.3) (2026-10-16)
 
 ### 🏗 Build System
