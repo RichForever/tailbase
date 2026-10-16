@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.7](https://github.com/RichForever/tailbase/compare/1.5.6...1.5.7) (2026-10-16)
+
+### ♻️ Refactoring
+
+* update editor classnames ([7793af6](https://github.com/RichForever/tailbase/commit/7793af6e5e30ccc0ef44d97735529dda9add4ae6))
+
 ## [1.5.6](https://github.com/RichForever/tailbase/compare/1.5.5...1.5.6) (2026-10-16)
 
 ### ♻️ Refactoring
