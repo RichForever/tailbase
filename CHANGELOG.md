@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.3](https://github.com/RichForever/Tailbase/compare/1.5.2...1.5.3) (2026-10-16)
+
+### 🏗 Build System
+
+* update dependencies to latest versions ([9ccb876](https://github.com/RichForever/Tailbase/commit/9ccb87616193a84ffc6c717ea18c936bf3d0695b))
+
 ## [1.5.2](https://github.com/RichForever/Tailbase/compare/1.5.1...1.5.2) (2026-10-15)
 
 ### 🏗 Build System
