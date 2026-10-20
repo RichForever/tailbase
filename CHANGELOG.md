@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.0](https://github.com/RichForever/tailbase/compare/1.5.7...1.6.0) (2026-10-20)
+
+### 🚀 Features
+
+* add customizer options ([0e8eab0](https://github.com/RichForever/tailbase/commit/0e8eab0d291538221c18470b02620886ce527bff))
+
+### 📝 Documentation
+
+* update readme file ([9ee8d77](https://github.com/RichForever/tailbase/commit/9ee8d77058f0f35a9a2d4b3400c41287d330a3cb))
+
+### ♻️ Refactoring
+
+* update config files ([cfa090d](https://github.com/RichForever/tailbase/commit/cfa090d452cf04f425f2fc97062578aef719923b))
+
 ## [1.5.7](https://github.com/RichForever/tailbase/compare/1.5.6...1.5.7) (2026-10-16)
 
 ### ♻️ Refactoring
