@@ -47,6 +47,12 @@ RUN rm -rf /var/lib/apt/lists/*
 # Update CA certificates
 RUN update-ca-certificates
 
+# A user with the id of the host user: Apache can only run as a user that exists in the container
+# (with an unknown uid it keeps running as root), and PHP must own the files to write plugins and themes.
+ARG HOST_UID=1000
+ARG HOST_GID=1000
+RUN groupadd -g ${HOST_GID} app && useradd -u ${HOST_UID} -g ${HOST_GID} -M -s /usr/sbin/nologin app
+
 # Enable Apache modules
 RUN a2enmod rewrite ssl
 

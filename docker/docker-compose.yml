@@ -42,13 +42,21 @@ services:
       - wpsite
   # Wordpress
   phpapache:
-    build: .
+    build:
+      context: .
+      args:
+        HOST_UID: ${HOST_UID:-1000}
+        HOST_GID: ${HOST_GID:-1000}
     depends_on:
       - db
 
     container_name: phpapache-${PROJECT}
     environment:
       APACHE_DOCUMENT_ROOT: /var/www/html/
+      # Run Apache/PHP as the owner of the files (the host user, created in the Dockerfile), so WordPress can
+      # write plugins and themes (get_filesystem_method() is "direct" only when PHP owns the files).
+      APACHE_RUN_USER: app
+      APACHE_RUN_GROUP: app
     volumes:
       - ./:/var/www/html/
       - ../certs/_wildcard.projects.local.pem:/etc/ssl/certs/projects.local.crt
