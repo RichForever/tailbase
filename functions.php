@@ -9,6 +9,7 @@
 $tailbase_modules = [
     "asset-manifest",
     "assets",
+    "customizer",
     "editor-styles",
     "head-cleanup",
     "icons",
@@ -17,6 +18,8 @@ $tailbase_modules = [
     "nav-menus",
     "plugin-compat",
     "post-types",
+    "social-links",
+    "security",
     "sidebars",
     "taxonomies",
     "theme-support",
