@@ -56,6 +56,7 @@ src/scripts/          JS entry (Alpine + small components)
 src/styles/           CSS entries and partials
 src/fonts/            Inter (latin-ext) web fonts
 assets/icons/         SVG icons, printed with tailbase_get_icon('name')
+assets/js/            plain JS for the Customizer (social links control), not bundled by webpack
 build/                webpack output + manifest.json (git-ignored)
 ```
 
@@ -81,9 +82,67 @@ hooks it itself, so a file is self-contained.
 | `icons.php`                                                           | `tailbase_get_icon($name)` returns an SVG from `assets/icons/`                   |
 | `image-sizes.php`, `post-types.php`, `taxonomies.php`, `sidebars.php` | Commented examples, ready to fill in                                             |
 | `plugin-compat.php`                                                   | Third-party plugin tweaks (Contact Form 7)                                       |
+| `meta-description.php`                                                | Meta description metabox                                                         |
+| `customizer.php`                                                      | Custom scripts (header/body/footer) and custom body classes                      |
+| `security.php`                                                        | Security section: hardening options and blocking PHP in `uploads/`               |
+| `social-links.php`                                                    | Social media links list and `tailbase_get_social_links()`                        |
 
 To add a module, create `lib/<name>.php`, define a prefixed function, hook it, and add `"<name>"` to the list in
 `functions.php`.
+
+## Theme options (Customizer)
+
+Site options live in **Appearance, Customize** and are stored as theme mods. There is no settings plugin.
+
+| Where in the Customizer | Option                                                                            |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| Custom scripts, Header  | Raw HTML printed in `wp_head`                                                     |
+| Custom scripts, Body    | Raw HTML printed in `wp_body_open`                                                |
+| Custom scripts, Footer  | Raw HTML printed in `wp_footer`                                                   |
+| Theme settings          | Custom body classes (space separated). Add future general options to this section |
+| Social media            | Sortable list of `platform`, `url`, `icon`                                        |
+| Security                | Checkboxes, see below                                                             |
+
+- **Scripts** are code, so users without the `unfiltered_html` capability get their input run through `wp_kses_post()`.
+  Empty fields print nothing; there is no enable checkbox.
+- **Social media** is stored as one JSON string (`tailbase_social_links`) and sanitized on save: URLs go through
+  `esc_url_raw()`, the list is capped at 50. An icon is a URL or the name of a file in `assets/icons/`. In a template:
+
+  ```php
+  foreach (tailbase_get_social_links() as $link) {
+    printf(
+      '<a href="%s">%s</a>',
+      esc_url($link["url"]),
+      esc_html($link["platform"]),
+    );
+  }
+  ```
+
+### Security section
+
+All options need the `manage_options` capability.
+
+| Option                          | Default | What it does                                                                                                                |
+| ------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Hide WordPress version          | on      | Empties the `the_generator` output (the `wp_head` tag is already removed in `head-cleanup.php`)                             |
+| Disable XML-RPC                 | on      | `xmlrpc_enabled` returns false                                                                                              |
+| Disable plugin and theme editor | on      | Defines `DISALLOW_FILE_EDIT` (skipped if `wp-config.php` already defines it)                                                |
+| Allow SVG uploads               | off     | Only for users with `unfiltered_html`; files with scripts or event handlers are rejected (safety net, not a full sanitizer) |
+| Block user enumeration          | on      | Redirects `?author=N` and hides `/wp/v2/users` for logged-out visitors                                                      |
+| Send security headers           | on      | `X-Content-Type-Options`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`                                                  |
+
+Always on (no option): on the first admin page load the theme writes `wp-content/uploads/.htaccess` that denies PHP
+execution (Apache). On nginx add `location ~* ^/wp-content/uploads/.*\.php$ { deny all; }` yourself.
+
+`wp-config.php` is not part of the theme. Keep `WP_DEBUG` off in production, for example:
+
+```php
+define(
+  "WP_DEBUG",
+  in_array(WP_ENVIRONMENT_TYPE, ["local", "development"], true),
+);
+define("WP_DEBUG_LOG", false);
+```
 
 ## How the build works
 
@@ -264,7 +323,22 @@ classes work inside the editor canvas too.
 `src/scripts/app.js` starts Alpine.js (`window.Alpine`) and runs two small components (`anchorScroll`, `scrollToUp`).
 The navbar's Alpine data (`HeaderData`) is defined inline in `header.php`.
 
-## Using this theme with a Gutenberg-blocks plugin: Option 1 (share the theme's Tailwind)
+## Using this theme with a Gutenberg-blocks plugin
+
+A blocks plugin can get its styles in two ways. Pick one per project.
+
+|                                              | Option 1: share the theme's Tailwind | Option 2: the plugin has its own styles |
+| -------------------------------------------- | ------------------------------------ | --------------------------------------- |
+| Tailwind builds                              | One, in the theme                    | Two: the theme's and the plugin's       |
+| Who ships the CSS                            | The theme (it scans the plugin)      | The plugin (prefixed, no reset)         |
+| Works with another theme                     | No                                   | Yes                                     |
+| Rebuild the theme when plugin markup changes | Yes                                  | No                                      |
+| Class name conflicts                         | None                                 | Avoided with a class prefix             |
+| Best for                                     | A private plugin on one site         | A plugin you distribute or reuse        |
+
+The `tailbase-blocks` plugin is an example of Option 2.
+
+## Option 1: share the theme's Tailwind
 
 Goal: a plugin ships blocks that use the theme's Tailwind utilities and tokens, and ships **no Tailwind CSS of
 its own**. There are no duplicated resets and no class-name conflicts, because there is only one Tailwind build.
@@ -358,3 +432,100 @@ add_action("admin_notices", function () {
 | Works on the front end, not in the editor | Editor CSS is stale: rebuild and hard-refresh; check `editor-styles` in `build/manifest.json` |
 | Build is slow or scans too much           | `@source` points at a whole plugins folder; narrow the path                                   |
 | Colors differ from the design             | Token missing in `theme.json`; add it and run `npm run tokens`                                |
+
+## Option 2: the theme has its own styles, the plugin has its own
+
+Goal: the theme and the plugin each ship their own Tailwind build. The plugin does not depend on this theme, and
+changing the plugin never requires rebuilding the theme. The `tailbase-blocks` plugin is built this way, so it is the
+reference implementation.
+
+Trade-offs:
+
+- Two stylesheets are loaded, so there is some duplicated CSS (a utility such as `flex` exists in both builds).
+- Nothing is shared automatically. Design tokens (colors, sizes) have to be connected on purpose, see step 4.
+- The plugin has to protect itself from the theme's CSS, and the theme from the plugin's. The steps below do that.
+
+### 1. Keep the theme's Tailwind out of the plugin
+
+Do **not** add an `@source` line for the plugin to `src/styles/app.css`. The theme only scans its own files, so
+nothing from the plugin ends up in `build/app-styles.*.css`.
+
+### 2. Give the plugin a prefixed Tailwind build
+
+In the plugin, `src/styles/tailwind.css` sets up Tailwind with a prefix, without the reset (preflight) and without cascade layers. `source(none)` stops Tailwind from scanning the whole plugin on its own; the stylesheet entry adds `@source` explicitly:
+
+```css
+@import "tailwindcss/theme.css" prefix(tbb);
+@import "tailwindcss/utilities.css" prefix(tbb) source(none);
+@import "./tokens.css";
+```
+
+- **A prefix** (`tbb:`) puts every class in its own namespace: write `tbb:flex tbb:p-8` in the block markup. The theme's
+  `flex` and the plugin's `tbb:flex` never collide, and theme variables become `--tbb-*`.
+- **No preflight**: the plugin must not restyle the theme's elements. Set margins, sizes and colors on your own
+  markup explicitly (for example `tbb:m-0` on a heading).
+- **One utility stylesheet** (`global-styles.css`) scans the whole plugin `src/` folder and is the only file loaded
+  for all blocks. With a copy per block, the cascade would depend on load order.
+
+Write class names as **complete strings** (`'tbb:bg-primary'`), never built from parts, so Tailwind can find them.
+
+### 3. Load the plugin's stylesheet on the front end and in the editor
+
+The plugin enqueues its own file with `enqueue_block_assets`, which runs in both places:
+
+```php
+add_action("enqueue_block_assets", function () {
+  wp_enqueue_style(
+    "my-blocks-global-styles",
+    plugins_url("build/global-styles.css", __FILE__),
+    [],
+    filemtime(__DIR__ . "/build/global-styles.css"),
+  );
+});
+```
+
+This is why the theme does not need to know about the plugin: `editor-styles.*.css` and `app-styles.*.css` stay as
+they are.
+
+### 4. Share design tokens through WordPress presets (optional)
+
+The theme's colors and font sizes live in `theme.json`, and WordPress turns them into CSS variables such as
+`--wp--preset--color--purple-500`. The plugin can read those variables and fall back to fixed values when the theme
+does not define them:
+
+```css
+@theme {
+  --color-primary: var(--wp--preset--color--purple-500, #383e61);
+}
+```
+
+A block using `tbb:bg-primary` then follows the Tailbase palette, and still looks right on another theme. To change
+a color for the plugin, edit its `tokens.css`. To change it for the theme, edit `theme.json`.
+
+### 5. Layers: what wins in the editor
+
+The theme's `editor.css` styles headings **outside any layer** (see "Layers in the block editor"), and unlayered CSS
+beats layered CSS. The plugin's utilities should therefore be **unlayered** in its built stylesheet, or a theme rule
+such as `h2 { font-size: ... }` would override `tbb:text-2xl` in the editor. Tailwind v4 emits `space-*` and `divide-*`
+with `:where()` (zero specificity), so the plugin redefines them with normal specificity.
+
+### 6. Build
+
+```bash
+# in the theme
+npm run build
+# in the plugin
+npm run build
+```
+
+The two builds are independent. Deploy both `build/` folders (both are git-ignored).
+
+### Troubleshooting
+
+| Symptom                                                  | Likely cause                                                                                                      |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| A block is unstyled                                      | `build/global-styles.css` is missing: run `npm run build` in the plugin                                           |
+| A plugin class has no effect                             | The class is missing the `tbb:` prefix, or is built dynamically instead of written as a full string               |
+| The theme overrides a block's heading or paragraph       | The plugin's utility is in a cascade layer; keep it unlayered, or set the property explicitly on the block markup |
+| Block colors do not match the theme                      | The token points at a preset that does not exist in `theme.json`: add the color there, or fix the token           |
+| Block looks different in the editor and on the front end | An editor rule from the theme or WordPress is stronger; check specificity and layers (step 5)                     |
