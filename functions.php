@@ -18,7 +18,6 @@ $tailbase_modules = [
     "nav-menus",
     "plugin-compat",
     "post-types",
-    "social-links",
     "security",
     "sidebars",
     "taxonomies",
