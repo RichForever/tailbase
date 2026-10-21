@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.1](https://github.com/RichForever/tailbase/compare/1.6.0...1.6.1) (2026-10-21)
+
+### 📝 Documentation
+
+* update readme file ([a44067b](https://github.com/RichForever/tailbase/commit/a44067be04560a6c719197629d56cde409019343))
+
+### ♻️ Refactoring
+
+* remove social links from customizer ([e892d2f](https://github.com/RichForever/tailbase/commit/e892d2f9a1ee45101c5ce1040bee72632139bb75))
+
 ## [1.6.0](https://github.com/RichForever/tailbase/compare/1.5.7...1.6.0) (2026-10-20)
 
 ### 🚀 Features
