@@ -56,7 +56,6 @@ src/scripts/          JS entry (Alpine + small components)
 src/styles/           CSS entries and partials
 src/fonts/            Inter (latin-ext) web fonts
 assets/icons/         SVG icons, printed with tailbase_get_icon('name')
-assets/js/            plain JS for the Customizer (social links control), not bundled by webpack
 build/                webpack output + manifest.json (git-ignored)
 ```
 
@@ -85,7 +84,6 @@ hooks it itself, so a file is self-contained.
 | `meta-description.php`                                                | Meta description metabox                                                         |
 | `customizer.php`                                                      | Custom scripts (header/body/footer) and custom body classes                      |
 | `security.php`                                                        | Security section: hardening options and blocking PHP in `uploads/`               |
-| `social-links.php`                                                    | Social media links list and `tailbase_get_social_links()`                        |
 
 To add a module, create `lib/<name>.php`, define a prefixed function, hook it, and add `"<name>"` to the list in
 `functions.php`.
@@ -100,23 +98,10 @@ Site options live in **Appearance, Customize** and are stored as theme mods. The
 | Custom scripts, Body    | Raw HTML printed in `wp_body_open`                                                |
 | Custom scripts, Footer  | Raw HTML printed in `wp_footer`                                                   |
 | Theme settings          | Custom body classes (space separated). Add future general options to this section |
-| Social media            | Sortable list of `platform`, `url`, `icon`                                        |
 | Security                | Checkboxes, see below                                                             |
 
 - **Scripts** are code, so users without the `unfiltered_html` capability get their input run through `wp_kses_post()`.
   Empty fields print nothing; there is no enable checkbox.
-- **Social media** is stored as one JSON string (`tailbase_social_links`) and sanitized on save: URLs go through
-  `esc_url_raw()`, the list is capped at 50. An icon is a URL or the name of a file in `assets/icons/`. In a template:
-
-  ```php
-  foreach (tailbase_get_social_links() as $link) {
-    printf(
-      '<a href="%s">%s</a>',
-      esc_url($link["url"]),
-      esc_html($link["platform"]),
-    );
-  }
-  ```
 
 ### Security section
 
