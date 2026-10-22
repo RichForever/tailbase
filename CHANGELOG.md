@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.4](https://github.com/RichForever/tailbase/compare/1.6.3...1.6.4) (2026-10-22)
+
+### 🏗 Build System
+
+* add tailwind4 class sorter in php files ([4ec91cc](https://github.com/RichForever/tailbase/commit/4ec91ccdf85329c2f4f16e51074bbdf759c4848c))
+* remove prettier package for php ([874bf5f](https://github.com/RichForever/tailbase/commit/874bf5f978660e551e4219d1107bc8a9d73b8a07))
+* test ([1ef8129](https://github.com/RichForever/tailbase/commit/1ef8129fc75be46fc5a51dc6a64272c052b59e21))
+
 ## [1.6.3](https://github.com/RichForever/tailbase/compare/1.6.2...1.6.3) (2026-10-22)
 
 ### 💄 Code Style
