@@ -1,13 +1,9 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require("path");
-const glob = require("glob");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const { WebpackAssetsManifest } = require("webpack-assets-manifest");
 const { EsbuildPlugin } = require('esbuild-loader')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 
@@ -51,8 +47,9 @@ module.exports = (env, argv) => {
       new WebpackAssetsManifest({
         output: path.resolve(__dirname, config.build.main + "/manifest.json"),
         customize(entry, original, manifest, asset) {
-          const pattern = /\.(js|css)$/i;
-          if (!pattern.test(entry.key)) {
+          const isBundle = /\.(js|css)$/i.test(entry.key);
+          const isImage = /^images\/.+\.(jpe?g|png|gif|svg|webp|avif)$/i.test(entry.key);
+          if (!isBundle && !isImage) {
             return false;
           }
         },
@@ -61,17 +58,6 @@ module.exports = (env, argv) => {
         filename: isProduction ? "[name].[chunkhash:8].css" : "[name].css",
         chunkFilename: isProduction ? "[name].[chunkhash:8].css" : "[name].css",
       }),
-      new BrowserSyncPlugin({
-        host: 'localhost',
-        port: 3000,
-        proxy: 'http://dev.site',
-        files: [
-            "./**/*.php",
-            "./**/*.scss",
-            "./**/*.css",
-            "./**/*.js"
-        ]
-      })
     ],
     module: {
       rules: [
@@ -91,10 +77,15 @@ module.exports = (env, argv) => {
           use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/i,
+          test: /\.(jpe?g|png|gif|svg|webp|avif)$/i,
           type: "asset/resource",
           generator: {
-            filename: "images/[name][ext]",
+            // Keep subfolders (src/images/a/x.jpg -> images/a/x.<hash>.jpg) so same-named files don't collide.
+            filename: (pathData) =>
+              path
+                .relative(config.src.images, pathData.filename)
+                .replace(/\.([^.]+)$/, ".[contenthash:8].$1")
+                .replace(/^/, "images/"),
           },
         },
         {

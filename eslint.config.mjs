@@ -1,5 +1,4 @@
 import js from "@eslint/js"; // ES6+ JavaScript
-import babelParser from "@babel/eslint-parser";
 export default [
   js.configs.recommended,
   {
@@ -10,15 +9,8 @@ export default [
   },
   {
     languageOptions: {
-      parser: babelParser,
-      parserOptions: {
-        requireConfigFile: false,
-        babelOptions: {
-          babelrc: false,
-          configFile: false,
-          presets: ["@babel/preset-env"],
-        },
-      },
+      ecmaVersion: "latest",
+      sourceType: "module",
     },
   },
   {
