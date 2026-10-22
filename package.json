@@ -23,7 +23,7 @@
     "prettier:check": "npx prettier . --check",
     "prettier:write": "npx prettier . --write",
     "release": "release-it",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind:sort": "tailwind-sort-php",
     "tokens": "node scripts/build-tokens.js",
     "prewatch": "npm run tokens",
     "watch": "webpack --watch",

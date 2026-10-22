@@ -19,13 +19,13 @@
   <body <?php body_class(is_404() ? "h-full" : ""); ?>>
     <?php wp_body_open(); ?>
 <nav
-  class="bg-white-500 mt-6 mb-16 md:mb-20 xl:mb-24 2xl:mb-20 px-6 lg:px-0 navbar <?php echo is_404()
+  class="navbar mt-6 mb-16 bg-white-500 px-6 md:mb-20 lg:px-0 xl:mb-24 2xl:mb-20 <?php echo is_404()
       ? "hidden"
       : "block"; ?>"
   x-data="HeaderData"
   :class="{'navbar--open': isMenuOpen, 'navbar--sticky': isSticky}"
 >
-  <div class="flex flex-wrap items-center justify-between mx-auto lg:container">
+  <div class="mx-auto flex flex-wrap items-center justify-between lg:container">
     <?php if (has_custom_logo()): ?>
       <div class="max-w-[80px] lg:max-w-[140px] xl:max-w-[180px]">
         <?php the_custom_logo(); ?>
@@ -35,33 +35,33 @@
           home_url("/"),
       ); ?>" class="navbar__brand" aria-label="Przejdź do strony głównej">
         <div class="inline-block">
-          <hq class="text-xl font-bold font-brico whitespace-nowrap text-picton-blue leading-none">Planet English</hq>
+          <hq class="font-brico text-picton-blue text-xl leading-none font-bold whitespace-nowrap">Planet English</hq>
         </div>
       </a>
     <?php endif; ?>
-    <button class="lg:hidden relative navbar__hamburger" aria-label="Open menu" @click="openMenuClickHandler">
-      <div class="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-transform bg-white-500 duration-200">
-        <div class="flex flex-col justify-around w-[20px] h-[20px] transform transition-transform duration-300 origin-center overflow-hidden">
-          <span class="bg-purple-500 h-[2px] w-7 transform transition-transform duration-300 origin-left span__item"></span>
+    <button class="navbar__hamburger relative lg:hidden" aria-label="Open menu" @click="openMenuClickHandler">
+      <div class="relative flex h-[50px] w-[50px] transform items-center justify-center overflow-hidden bg-white-500 transition-transform duration-200">
+        <div class="flex h-[20px] w-[20px] origin-center transform flex-col justify-around overflow-hidden transition-transform duration-300">
+          <span class="span__item h-[2px] w-7 origin-left transform bg-purple-500 transition-transform duration-300"></span>
           <span
-            class="bg-purple-500 h-[2px] w-7 rounded transform transition-transform duration-300 delay-75 span__item"
+            class="span__item h-[2px] w-7 transform rounded bg-purple-500 transition-transform delay-75 duration-300"
           ></span>
           <span
-            class="bg-purple-500 h-[2px] w-7 transform transition-transform duration-300 origin-left delay-150 span__item"
+            class="span__item h-[2px] w-7 origin-left transform bg-purple-500 transition-transform delay-150 duration-300"
           ></span>
     
-          <div class="absolute items-center justify-between transform transition-transform duration-500 top-2.5 -translate-x-10 flex w-0 navbar__close">
+          <div class="navbar__close absolute top-2.5 flex w-0 -translate-x-10 transform items-center justify-between transition-transform duration-500">
             <span
-              class="absolute bg-purple-500 h-[2px] w-5 transform transition-transform duration-500 rotate-0 delay-200"
+              class="absolute h-[2px] w-5 rotate-0 transform bg-purple-500 transition-transform delay-200 duration-500"
             ></span>
             <span
-              class="absolute bg-purple-500 h-[2px] w-5 transform transition-transform duration-500 -rotate-0 delay-200"
+              class="absolute h-[2px] w-5 -rotate-0 transform bg-purple-500 transition-transform delay-200 duration-500"
             ></span>
           </div>
         </div>
       </div>
     </button>
-    <div class="hidden w-full lg:block lg:w-auto navbar__menu" id="navbar-default">
+    <div class="navbar__menu hidden w-full lg:block lg:w-auto" id="navbar-default">
       <?php wp_nav_menu([
           "theme_location" => "main_menu",
           "container" => false,
