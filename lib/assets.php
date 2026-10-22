@@ -17,7 +17,13 @@ function tailbase_enqueue_assets()
     wp_enqueue_style("theme-styles", tailbase_asset("theme-styles.css"));
 
     // Theme specific scripts
-    wp_enqueue_script("app-scripts", tailbase_asset("app-scripts.js"), [], "", true);
+    wp_enqueue_script(
+        "app-scripts",
+        tailbase_asset("app-scripts.js"),
+        [],
+        "",
+        true,
+    );
 
     wp_localize_script("app-scripts", "wp", [
         "siteUrl" => home_url(),

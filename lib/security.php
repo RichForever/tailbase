@@ -49,7 +49,10 @@ function tailbase_security_options()
  */
 function tailbase_security_enabled($key)
 {
-    return (bool) get_theme_mod("tailbase_security_{$key}", tailbase_security_options()[$key][2]);
+    return (bool) get_theme_mod(
+        "tailbase_security_{$key}",
+        tailbase_security_options()[$key][2],
+    );
 }
 
 function tailbase_customize_security($wp_customize)
@@ -61,7 +64,10 @@ function tailbase_customize_security($wp_customize)
         "capability" => "manage_options",
     ]);
 
-    foreach (tailbase_security_options() as $key => [$label, $description, $default]) {
+    foreach (
+        tailbase_security_options()
+        as $key => [$label, $description, $default]
+    ) {
         $wp_customize->add_setting("tailbase_security_{$key}", [
             "type" => "theme_mod",
             "default" => $default,
@@ -88,7 +94,10 @@ add_filter("xmlrpc_enabled", function ($enabled) {
     return tailbase_security_enabled("disable_xmlrpc") ? false : $enabled;
 });
 
-if (!defined("DISALLOW_FILE_EDIT") && tailbase_security_enabled("disable_file_edit")) {
+if (
+    !defined("DISALLOW_FILE_EDIT") &&
+    tailbase_security_enabled("disable_file_edit")
+) {
     define("DISALLOW_FILE_EDIT", true);
 }
 
@@ -98,7 +107,8 @@ if (!defined("DISALLOW_FILE_EDIT") && tailbase_security_enabled("disable_file_ed
  */
 function tailbase_svg_allowed()
 {
-    return tailbase_security_enabled("enable_svg") && current_user_can("unfiltered_html");
+    return tailbase_security_enabled("enable_svg") &&
+        current_user_can("unfiltered_html");
 }
 
 add_filter("upload_mimes", function ($mimes) {
@@ -117,7 +127,11 @@ add_filter(
             return $data;
         }
 
-        if (tailbase_svg_allowed() && "svg" === strtolower(pathinfo((string) $filename, PATHINFO_EXTENSION))) {
+        if (
+            tailbase_svg_allowed() &&
+            "svg" ===
+                strtolower(pathinfo((string) $filename, PATHINFO_EXTENSION))
+        ) {
             $data["ext"] = "svg";
             $data["type"] = "image/svg+xml";
         }
@@ -125,21 +139,37 @@ add_filter(
         return $data;
     },
     10,
-    3
+    3,
 );
 
 // Basic safety net, not a full sanitizer: rejects SVG files that contain scripts or event handlers.
 add_filter("wp_handle_upload_prefilter", function ($file) {
     $name = isset($file["name"]) ? (string) $file["name"] : "";
 
-    if ("svg" !== strtolower(pathinfo($name, PATHINFO_EXTENSION)) || empty($file["tmp_name"])) {
+    if (
+        "svg" !== strtolower(pathinfo($name, PATHINFO_EXTENSION)) ||
+        empty($file["tmp_name"])
+    ) {
         return $file;
     }
 
-    $contents = file_get_contents($file["tmp_name"], false, null, 0, 2 * MB_IN_BYTES);
+    $contents = file_get_contents(
+        $file["tmp_name"],
+        false,
+        null,
+        0,
+        2 * MB_IN_BYTES,
+    );
 
-    if (false === $contents || preg_match('/<script|<foreignObject|<iframe|<embed|<object|<!ENTITY|javascript:|data:text\/html|\son[a-z]+\s*=/i', $contents)) {
-        $file["error"] = "This SVG file contains potentially unsafe code and was rejected.";
+    if (
+        false === $contents ||
+        preg_match(
+            "/<script|<foreignObject|<iframe|<embed|<object|<!ENTITY|javascript:|data:text\/html|\son[a-z]+\s*=/i",
+            $contents,
+        )
+    ) {
+        $file["error"] =
+            "This SVG file contains potentially unsafe code and was rejected.";
     }
 
     return $file;
@@ -149,17 +179,27 @@ add_filter("wp_handle_upload_prefilter", function ($file) {
 add_action(
     "template_redirect",
     function () {
-        if (tailbase_security_enabled("block_user_enumeration") && isset($_GET["author"]) && !is_user_logged_in()) {
+        if (
+            tailbase_security_enabled("block_user_enumeration") &&
+            isset($_GET["author"]) &&
+            !is_user_logged_in()
+        ) {
             wp_safe_redirect(home_url("/"), 301);
             exit();
         }
     },
-    1 // Before redirect_canonical() turns ?author=1 into /author/username/.
+    1, // Before redirect_canonical() turns ?author=1 into /author/username/.
 );
 
 add_filter("rest_endpoints", function ($endpoints) {
-    if (tailbase_security_enabled("block_user_enumeration") && !is_user_logged_in()) {
-        unset($endpoints["/wp/v2/users"], $endpoints["/wp/v2/users/(?P<id>[\d]+)"]);
+    if (
+        tailbase_security_enabled("block_user_enumeration") &&
+        !is_user_logged_in()
+    ) {
+        unset(
+            $endpoints["/wp/v2/users"],
+            $endpoints["/wp/v2/users/(?P<id>[\d]+)"],
+        );
     }
 
     return $endpoints;

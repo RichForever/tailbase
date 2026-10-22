@@ -20,7 +20,7 @@ function tailbase_asset_path($file)
 
     if (!array_key_exists($file, $manifest)) {
         throw new Exception(
-            "Unable to locate asset: {$file}. Please check your webpack output paths and try again."
+            "Unable to locate asset: {$file}. Please check your webpack output paths and try again.",
         );
     }
 
@@ -30,4 +30,12 @@ function tailbase_asset_path($file)
 function tailbase_asset($file)
 {
     return get_template_directory_uri() . "/" . tailbase_asset_path($file);
+}
+
+/**
+ * URL of an image from src/images, e.g. tailbase_image("hero.jpg").
+ */
+function tailbase_image($file)
+{
+    return tailbase_asset("images/" . ltrim($file, "/"));
 }

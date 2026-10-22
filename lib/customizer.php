@@ -22,12 +22,19 @@ function tailbase_custom_scripts_places()
 function tailbase_sanitize_script($value)
 {
     // Scripts are code: only users who may post unfiltered HTML can save them.
-    return current_user_can("unfiltered_html") ? (string) $value : wp_kses_post((string) $value);
+    return current_user_can("unfiltered_html")
+        ? (string) $value
+        : wp_kses_post((string) $value);
 }
 
 function tailbase_sanitize_body_classes($value)
 {
-    $classes = array_filter(array_map("sanitize_html_class", preg_split("/\s+/", trim((string) $value))));
+    $classes = array_filter(
+        array_map(
+            "sanitize_html_class",
+            preg_split("/\s+/", trim((string) $value)),
+        ),
+    );
 
     return implode(" ", array_unique($classes));
 }
@@ -37,7 +44,8 @@ function tailbase_customize_register($wp_customize)
     // Custom scripts: panel > section per place > code field.
     $wp_customize->add_panel("tailbase_custom_scripts", [
         "title" => "Custom scripts",
-        "description" => "Scripts and tags (analytics, pixels, etc.) printed on every page.",
+        "description" =>
+            "Scripts and tags (analytics, pixels, etc.) printed on every page.",
         "priority" => 200,
     ]);
 
@@ -54,11 +62,15 @@ function tailbase_customize_register($wp_customize)
         ]);
 
         $wp_customize->add_control(
-            new WP_Customize_Code_Editor_Control($wp_customize, "tailbase_scripts_{$key}", [
-                "label" => "{$label} scripts",
-                "section" => "tailbase_scripts_{$key}",
-                "code_type" => "text/html",
-            ])
+            new WP_Customize_Code_Editor_Control(
+                $wp_customize,
+                "tailbase_scripts_{$key}",
+                [
+                    "label" => "{$label} scripts",
+                    "section" => "tailbase_scripts_{$key}",
+                    "code_type" => "text/html",
+                ],
+            ),
         );
     }
 
@@ -76,7 +88,8 @@ function tailbase_customize_register($wp_customize)
 
     $wp_customize->add_control("tailbase_body_classes", [
         "label" => "Custom body classes",
-        "description" => "CSS classes added to the body tag, separated by spaces.",
+        "description" =>
+            "CSS classes added to the body tag, separated by spaces.",
         "section" => "tailbase_theme_settings",
         "type" => "text",
     ]);
@@ -107,6 +120,9 @@ function tailbase_custom_body_classes($classes)
 {
     $custom = get_theme_mod("tailbase_body_classes", "");
 
-    return array_merge($classes, array_filter(preg_split("/\s+/", trim((string) $custom))));
+    return array_merge(
+        $classes,
+        array_filter(preg_split("/\s+/", trim((string) $custom))),
+    );
 }
 add_filter("body_class", "tailbase_custom_body_classes");

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package WordPress
  * @subpackage Tailbase
@@ -7,7 +6,9 @@
  */
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?> class="scroll-smooth <?php echo is_404() ? "h-full" : ""; ?>">
+<html <?php language_attributes(); ?> class="scroll-smooth <?php echo is_404()
+     ? "h-full"
+     : ""; ?>">
   <head>
     <meta charset="<?php bloginfo("charset"); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +19,9 @@
   <body <?php body_class(is_404() ? "h-full" : ""); ?>>
     <?php wp_body_open(); ?>
 <nav
-  class="bg-white-500 mt-6 mb-16 md:mb-20 xl:mb-24 2xl:mb-20 px-6 lg:px-0 navbar <?php echo is_404() ? "hidden" : "block"; ?>"
+  class="bg-white-500 mt-6 mb-16 md:mb-20 xl:mb-24 2xl:mb-20 px-6 lg:px-0 navbar <?php echo is_404()
+      ? "hidden"
+      : "block"; ?>"
   x-data="HeaderData"
   :class="{'navbar--open': isMenuOpen, 'navbar--sticky': isSticky}"
 >
@@ -28,7 +31,9 @@
         <?php the_custom_logo(); ?>
       </div>
     <?php else: ?>
-      <a href="<?php echo esc_url(home_url("/")); ?>" class="navbar__brand" aria-label="Przejdź do strony głównej">
+      <a href="<?php echo esc_url(
+          home_url("/"),
+      ); ?>" class="navbar__brand" aria-label="Przejdź do strony głównej">
         <div class="inline-block">
           <hq class="text-xl font-bold font-brico whitespace-nowrap text-picton-blue leading-none">Planet English</hq>
         </div>
@@ -61,7 +66,8 @@
           "theme_location" => "main_menu",
           "container" => false,
           "fallback_cb" => false,
-          "items_wrap" => '<ul class="font-semibold flex flex-col mt-4 lg:flex-row lg:space-x-6">%3$s</ul>',
+          "items_wrap" =>
+              '<ul class="font-semibold flex flex-col mt-4 lg:flex-row lg:space-x-6">%3$s</ul>',
       ]); ?>
     </div>
   </div>
