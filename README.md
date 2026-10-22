@@ -7,6 +7,43 @@ There is no templating engine and no Composer dependency. Everything is bundled 
 - Node and npm (the repo enforces npm through `only-allow`)
 - Parent theme. A child theme is `Tailbase-Child` (its `Template:` header must stay `Tailbase`)
 
+## Table of contents
+
+- [Quick start](#quick-start)
+  - [Packaging](#packaging)
+- [Project structure](#project-structure)
+  - [Templates](#templates)
+  - [`lib/` modules](#lib-modules)
+- [Theme options (Customizer)](#theme-options-customizer)
+  - [Security section](#security-section)
+- [How the build works](#how-the-build-works)
+- [Images](#images)
+  - [Use an image in a PHP template](#use-an-image-in-a-php-template)
+  - [Use an image in CSS](#use-an-image-in-css)
+  - [Workflow](#workflow)
+- [Styles](#styles)
+  - [The three entry files](#the-three-entry-files)
+  - [Adding new styles: which layer to use](#adding-new-styles-which-layer-to-use)
+  - [Single source of truth: `theme.json`](#single-source-of-truth-themejson)
+  - [Layers in the block editor](#layers-in-the-block-editor)
+  - [Block editor styles](#block-editor-styles)
+- [JavaScript](#javascript)
+- [Using this theme with a Gutenberg-blocks plugin](#using-this-theme-with-a-gutenberg-blocks-plugin)
+- [Option 1: share the theme's Tailwind](#option-1-share-the-themes-tailwind)
+  - [1. Tell Tailwind to scan the plugin](#1-tell-tailwind-to-scan-the-plugin)
+  - [2. Write the plugin's blocks with theme classes](#2-write-the-plugins-blocks-with-theme-classes)
+  - [3. Rebuild the theme](#3-rebuild-the-theme)
+  - [4. Guard against a different theme (recommended)](#4-guard-against-a-different-theme-recommended)
+  - [Troubleshooting](#troubleshooting)
+- [Option 2: the theme has its own styles, the plugin has its own](#option-2-the-theme-has-its-own-styles-the-plugin-has-its-own)
+  - [1. Keep the theme's Tailwind out of the plugin](#1-keep-the-themes-tailwind-out-of-the-plugin)
+  - [2. Give the plugin a prefixed Tailwind build](#2-give-the-plugin-a-prefixed-tailwind-build)
+  - [3. Load the plugin's stylesheet on the front end and in the editor](#3-load-the-plugins-stylesheet-on-the-front-end-and-in-the-editor)
+  - [4. Share design tokens through WordPress presets (optional)](#4-share-design-tokens-through-wordpress-presets-optional)
+  - [5. Layers: what wins in the editor](#5-layers-what-wins-in-the-editor)
+  - [6. Build](#6-build)
+  - [Troubleshooting](#troubleshooting-1)
+
 ## Quick start
 
 ```bash
@@ -55,6 +92,7 @@ scripts/zip-theme.js      packages the theme into dist/<theme>-<version>.zip
 src/scripts/          JS entry (Alpine + small components)
 src/styles/           CSS entries and partials
 src/fonts/            Inter (latin-ext) web fonts
+src/images/           images for templates and CSS, optimised and hashed by webpack (see Images)
 assets/icons/         SVG icons, printed with tailbase_get_icon('name')
 build/                webpack output + manifest.json (git-ignored)
 ```
@@ -70,20 +108,20 @@ view really needs different markup (for example `single.php`, `archive.php`).
 `functions.php` loads every module listed in `$tailbase_modules`. Each module defines a `tailbase_*` function and
 hooks it itself, so a file is self-contained.
 
-| File                                                                  | Purpose                                                                          |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `asset-manifest.php`                                                  | `tailbase_asset_path()` / `tailbase_asset()`: resolve hashed build files         |
-| `assets.php`                                                          | Enqueues styles and scripts, dequeues core block CSS and jQuery on the front end |
-| `editor-styles.php`                                                   | Registers `build/editor-styles.*.css` for the block editor                       |
-| `theme-support.php`                                                   | `add_theme_support()` calls                                                      |
-| `head-cleanup.php`                                                    | Removes unneeded `wp_head` output (emoji, RSD, generator, ...)                   |
-| `nav-menus.php`                                                       | Registers the `main_menu` and `footer_menu` locations                            |
-| `icons.php`                                                           | `tailbase_get_icon($name)` returns an SVG from `assets/icons/`                   |
-| `image-sizes.php`, `post-types.php`, `taxonomies.php`, `sidebars.php` | Commented examples, ready to fill in                                             |
-| `plugin-compat.php`                                                   | Third-party plugin tweaks (Contact Form 7)                                       |
-| `meta-description.php`                                                | Meta description metabox                                                         |
-| `customizer.php`                                                      | Custom scripts (header/body/footer) and custom body classes                      |
-| `security.php`                                                        | Security section: hardening options and blocking PHP in `uploads/`               |
+| File                                                                  | Purpose                                                                                       |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `asset-manifest.php`                                                  | `tailbase_asset_path()` / `tailbase_asset()` / `tailbase_image()`: resolve hashed build files |
+| `assets.php`                                                          | Enqueues styles and scripts, dequeues core block CSS and jQuery on the front end              |
+| `editor-styles.php`                                                   | Registers `build/editor-styles.*.css` for the block editor                                    |
+| `theme-support.php`                                                   | `add_theme_support()` calls                                                                   |
+| `head-cleanup.php`                                                    | Removes unneeded `wp_head` output (emoji, RSD, generator, ...)                                |
+| `nav-menus.php`                                                       | Registers the `main_menu` and `footer_menu` locations                                         |
+| `icons.php`                                                           | `tailbase_get_icon($name)` returns an SVG from `assets/icons/`                                |
+| `image-sizes.php`, `post-types.php`, `taxonomies.php`, `sidebars.php` | Commented examples, ready to fill in                                                          |
+| `plugin-compat.php`                                                   | Third-party plugin tweaks (Contact Form 7)                                                    |
+| `meta-description.php`                                                | Meta description metabox                                                                      |
+| `customizer.php`                                                      | Custom scripts (header/body/footer) and custom body classes                                   |
+| `security.php`                                                        | Security section: hardening options and blocking PHP in `uploads/`                            |
 
 To add a module, create `lib/<name>.php`, define a prefixed function, hook it, and add `"<name>"` to the list in
 `functions.php`.
@@ -145,6 +183,50 @@ Output goes to `build/` with content hashes in production. `build/manifest.json`
 theme throws, so run a build after cloning.
 
 PostCSS uses only `@tailwindcss/postcss`. It also handles `@import` and CSS nesting.
+
+## Images
+
+Put images in `src/images/` (subfolders are fine). Webpack copies every image in that folder to `build/images/`,
+compresses it (mozjpeg, pngquant, gifsicle, svgo) and adds a content hash to the file name, for example
+`src/images/hero.jpg` becomes `build/images/hero.3fa9c1d2.jpg`. Supported formats: jpg, png, gif, svg, webp, avif.
+`src/scripts/app.js` ends with a `require.context("../images", ...)` line, which is what makes webpack pick up
+images that no CSS or JS refers to. Do not remove it.
+
+### Use an image in a PHP template
+
+`build/manifest.json` maps the original path to the hashed file, and `tailbase_image()` reads it:
+
+```php
+<img src="<?php echo esc_url(tailbase_image("hero.jpg")); ?>" alt="">
+<img src="<?php echo esc_url(tailbase_image("team/anna.webp")); ?>" alt="Anna">
+```
+
+The argument is the path inside `src/images/`, without the hash. The manifest key is `images/<path>`, so you can
+also call `tailbase_asset("images/hero.jpg")`.
+
+### Use an image in CSS
+
+Reference it with a relative path, for example `url("../images/hero.jpg")` in `src/styles/theme.css`. Webpack
+rewrites the URL to the hashed file.
+
+### Workflow
+
+1. Add or replace the file in `src/images/`.
+2. Run `npm run build`, or keep `npm run watch` running.
+3. Use `tailbase_image("file.jpg")` in the template.
+
+Things to know:
+
+- **Rebuild after adding an image.** PHP can only find files that are in `build/` and in `manifest.json`. A name
+  that is not in the manifest makes `tailbase_asset()` throw an exception, which also catches typos.
+- **Hashed names change when the file changes.** Never hard-code a `build/images/...` URL, always use the helper.
+- **`build/` is wiped on every build** and is git-ignored. Never put files there by hand, and run the build on
+  deploy (or ship the folder; `npm run zip` does a build first).
+- **Same file name in different folders is fine.** The folder is part of the path and the manifest key.
+- **Static files that need no processing** (icons, favicons, logos that never change) can live in `assets/`
+  instead and be loaded with `get_theme_file_uri("assets/...")`. `assets/icons/` is read by `tailbase_get_icon()`.
+- **Image minification needs native binaries.** If the build warns `cjpeg ENOENT` (or the same for `pngquant` or
+  `gifsicle`), npm skipped the install scripts. Run `npm rebuild mozjpeg gifsicle pngquant-bin` and build again.
 
 ## Styles
 
