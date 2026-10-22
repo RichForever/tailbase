@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.3](https://github.com/RichForever/tailbase/compare/1.6.2...1.6.3) (2026-10-22)
+
+### 💄 Code Style
+
+* remove unused class ([96b5c8a](https://github.com/RichForever/tailbase/commit/96b5c8a0d7be6c3c34bca12303662bf3806d047c))
+
 ## [1.6.2](https://github.com/RichForever/tailbase/compare/1.6.1...1.6.2) (2026-10-22)
 
 ### 📝 Documentation
