@@ -31,7 +31,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --quiet --fix",
-    "*.{json,js,ts,jsx,tsx,html,css,php}": "prettier --write --ignore-unknown"
+    "*.{json,js,ts,jsx,tsx,html,css}": "prettier --write --ignore-unknown",
+    "*.php": "tailwind-sort-php"
   },
   "config": {
     "commitizen": {
@@ -40,7 +41,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@prettier/plugin-php": "^0.25.0",
     "@release-it/bumper": "^8.0.1",
     "@release-it/conventional-changelog": "^12.0.2",
     "@runtimestudio/tailwind-sort-php": "^0.4.0",
