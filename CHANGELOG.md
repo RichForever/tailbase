@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.2](https://github.com/RichForever/tailbase/compare/1.6.1...1.6.2) (2026-10-22)
+
+### 📝 Documentation
+
+* update files ([f2261d3](https://github.com/RichForever/tailbase/commit/f2261d36d7f57e39b9f3534e8b2e591a099b22a2))
+* update readme file with instruction regarding image handling ([9efc1a6](https://github.com/RichForever/tailbase/commit/9efc1a600f2a5404428e1c1853345469ad3336eb))
+
+### 🏗 Build System
+
+* remove unused packages, fix prettier ([95f5ff9](https://github.com/RichForever/tailbase/commit/95f5ff9d699df529c034f2a5ca38e3e3aa5d6d6e))
+
 ## [1.6.1](https://github.com/RichForever/tailbase/compare/1.6.0...1.6.1) (2026-10-21)
 
 ### 📝 Documentation
