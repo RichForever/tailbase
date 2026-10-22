@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.5](https://github.com/RichForever/tailbase/compare/1.6.4...1.6.5) (2026-10-22)
+
+### 📦 Miscellaneous
+
+* add commit linter ([2bf943e](https://github.com/RichForever/tailbase/commit/2bf943ed68616b4d8c82225862202b933ef16ae7))
+
 ## [1.6.4](https://github.com/RichForever/tailbase/compare/1.6.3...1.6.4) (2026-10-22)
 
 ### 🏗 Build System
