@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.6](https://github.com/RichForever/tailbase/compare/1.6.5...1.6.6) (2026-10-26)
+
+### 🏗 Build System
+
+* update config files ([f0b1904](https://github.com/RichForever/tailbase/commit/f0b19046aff8a0f1f79ed7f0c228448fe03c1d4a))
+
 ## [1.6.5](https://github.com/RichForever/tailbase/compare/1.6.4...1.6.5) (2026-10-22)
 
 ### 📦 Miscellaneous
