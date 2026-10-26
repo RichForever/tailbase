@@ -1,9 +1,7 @@
-version: "3"
-
 services:
-  # Mailhog
-  mailhog:
-    image: mailhog/mailhog
+  # Mailpit (SMTP on 1025, web UI on 8025)
+  mailpit:
+    image: axllent/mailpit:latest
     logging:
       driver: "none"
     ports:
@@ -14,7 +12,7 @@ services:
   # Database
   db:
     container_name: db-${PROJECT}
-    image: mysql:5.7
+    image: mysql:8.0
     volumes:
       - db_data:/var/lib/mysql
     #    restart: always
@@ -78,7 +76,7 @@ services:
     depends_on:
       - phpapache
       - db
-    image: wordpress:cli-php8.1
+    image: wordpress:cli-php8.4
     user: 1000:1000
     command: tail -f /dev/null
     volumes: ["./:/var/www/html"]
@@ -94,4 +92,3 @@ networks:
   wpsite:
 volumes:
   db_data:
-  mailhog:

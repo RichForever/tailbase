@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.4-apache
 WORKDIR /var/www/html/
 
 # Define PHP_TIMEZONE env variable
@@ -30,6 +30,12 @@ RUN { \
 RUN apt update && \
     apt-get install -y \
         libzip-dev \
+        libpng-dev \
+        libjpeg-dev \
+        libwebp-dev \
+        libfreetype6-dev \
+        libicu-dev \
+        libmagickwand-dev \
         zip \
         curl \
         openssl \
@@ -37,9 +43,12 @@ RUN apt update && \
         git
 
 # Install PHP extensions
-RUN docker-php-ext-install zip && \
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && \
+    docker-php-ext-install zip gd exif intl && \
     docker-php-ext-install mysqli pdo pdo_mysql && \
-    docker-php-ext-enable pdo_mysql
+    docker-php-ext-enable pdo_mysql && \
+    pecl install imagick && \
+    docker-php-ext-enable imagick
 
 # Clean up
 RUN rm -rf /var/lib/apt/lists/*

@@ -3,7 +3,7 @@
 A minimal WordPress theme built on plain PHP templates, Tailwind CSS v4, Alpine.js and Gutenberg.
 There is no templating engine and no Composer dependency. Everything is bundled with webpack.
 
-- Requires PHP 8.0+
+- Requires PHP 8.4+
 - Node and npm (the repo enforces npm through `only-allow`)
 - Parent theme. A child theme is `Tailbase-Child` (its `Template:` header must stay `Tailbase`)
 
@@ -84,7 +84,7 @@ header.php            <head>, <body>, navbar (brand, hamburger, main_menu) and t
 footer.php            scroll-up button, wp_footer(), closing tags
 index.php             the only content template: the_content() inside <main class="container mx-auto">
 404.php               redirects to the home page
-functions.php         loads the lib/ modules, login error message, local mailhog setup
+functions.php         loads the lib/ modules, login error message, local mail catcher (Mailpit) SMTP setup
 theme.json            single source of truth for colors, font sizes and font families
 lib/                  one PHP module per concern (see below)
 scripts/build-tokens.js   generates src/styles/tokens.css from theme.json

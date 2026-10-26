@@ -37,7 +37,7 @@ add_filter("login_errors", "tailbase_custom_login_error_message");
 // load only on local
 if ("local" === wp_get_environment_type()) {
     add_action("phpmailer_init", function ($phpmailer) {
-        $phpmailer->Host = "mailhog";
+        $phpmailer->Host = "mailpit";
         $phpmailer->Port = 1025;
         $phpmailer->IsSMTP();
     });
