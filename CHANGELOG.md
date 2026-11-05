@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.6.7](https://github.com/RichForever/tailbase/compare/1.6.6...1.6.7) (2026-11-05)
+
+### 📝 Documentation
+
+* update readme file ([b97bd43](https://github.com/RichForever/tailbase/commit/b97bd43e5d2b98edf557d7739974f6298aced0ec))
+
+### 💄 Code Style
+
+* move fonts to assets directory, update css files ([6449025](https://github.com/RichForever/tailbase/commit/64490257880360a09d48269f155062f996b8d10d))
+* update font sizes in css files ([afdf224](https://github.com/RichForever/tailbase/commit/afdf224da3d036cd8e706bdb9f66302e16b5dce0))
+
+### ♻️ Refactoring
+
+* update security fixes ([556672e](https://github.com/RichForever/tailbase/commit/556672ecc2b530deda03eba1cb78b2e8e1a5dc60))
+
+### 🏗 Build System
+
+* change directory for zipped theme ([7db2f29](https://github.com/RichForever/tailbase/commit/7db2f29fbcd3016e1925a7744a2a4d34f62a8bbd))
+
 ## [1.6.6](https://github.com/RichForever/tailbase/compare/1.6.5...1.6.6) (2026-10-26)
 
 ### 🏗 Build System
