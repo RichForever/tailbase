@@ -13,12 +13,12 @@ function tailbase_security_options()
     return [
         "hide_wp_version" => [
             "Hide WordPress version",
-            "Remove the WordPress version number from the site's frontend code and feeds.",
+            "Remove the generator tag from the page head and feeds, the RSD link, ?ver= on scripts and styles when it matches the WordPress version, and readme.html and license.txt (Apache, via .htaccess).",
             true,
         ],
         "disable_xmlrpc" => [
             "Disable XML-RPC",
-            "Turn off the XML-RPC API (a common target of brute force and pingback abuse).",
+            "Turn off the XML-RPC API (a common target of brute force and pingback abuse): login methods, pingbacks, the X-Pingback header and the pingback link are removed, and xmlrpc.php returns 404 (Apache, via .htaccess).",
             true,
         ],
         "disable_file_edit" => [
@@ -85,13 +85,78 @@ function tailbase_customize_security($wp_customize)
 }
 add_action("customize_register", "tailbase_customize_security");
 
-// Hide the WordPress version (the generator tag itself is removed in head-cleanup.php).
+/**
+ * Hide the WordPress version.
+ *
+ * 1. Generator tag in <head>.
+ * 2. Generator tag in every feed type (RSS, RSS 0.92, RDF, Atom, comment feeds, OPML, export).
+ * 3. Really Simple Discovery link (only needed by XML-RPC clients).
+ * 4. ?ver= on scripts and styles, only when it equals the core version.
+ * 5. readme.html and license.txt in the site root (see tailbase_sync_htaccess()).
+ */
+add_action("after_setup_theme", function () {
+    if (!tailbase_security_enabled("hide_wp_version")) {
+        return;
+    }
+
+    remove_action("wp_head", "wp_generator");
+    remove_action("wp_head", "rsd_link");
+});
+
+// Feeds print the generator through the_generator() for every type, so one filter covers them all.
 add_filter("the_generator", function ($generator) {
     return tailbase_security_enabled("hide_wp_version") ? "" : $generator;
 });
 
+// Plugins and themes keep their own version strings, which are used for cache busting.
+function tailbase_strip_core_version($src)
+{
+    if (
+        !is_string($src) ||
+        !tailbase_security_enabled("hide_wp_version") ||
+        false === strpos($src, "ver=")
+    ) {
+        return $src;
+    }
+
+    $query = (string) wp_parse_url($src, PHP_URL_QUERY);
+    parse_str($query, $args);
+
+    if (isset($args["ver"]) && get_bloginfo("version") === $args["ver"]) {
+        $src = remove_query_arg("ver", $src);
+    }
+
+    return $src;
+}
+add_filter("style_loader_src", "tailbase_strip_core_version", 20);
+add_filter("script_loader_src", "tailbase_strip_core_version", 20);
+
+/**
+ * Disable XML-RPC. xmlrpc_enabled only stops methods that need a login, so pingbacks are removed
+ * separately, the X-Pingback header and <link rel="pingback"> are dropped, and xmlrpc.php itself is
+ * blocked in .htaccess (see tailbase_sync_htaccess()).
+ */
 add_filter("xmlrpc_enabled", function ($enabled) {
     return tailbase_security_enabled("disable_xmlrpc") ? false : $enabled;
+});
+
+add_filter("xmlrpc_methods", function ($methods) {
+    if (tailbase_security_enabled("disable_xmlrpc")) {
+        unset(
+            $methods["pingback.ping"],
+            $methods["pingback.extensions.getPingbacks"],
+        );
+    }
+
+    return $methods;
+});
+
+add_filter("wp_headers", function ($headers) {
+    if (tailbase_security_enabled("disable_xmlrpc")) {
+        unset($headers["X-Pingback"]);
+    }
+
+    return $headers;
 });
 
 if (
@@ -214,6 +279,49 @@ add_filter("wp_headers", function ($headers) {
 
     return $headers;
 });
+
+/**
+ * Root .htaccess rules (Apache), kept in their own "Tailbase" block and synced with the options:
+ *  - "Hide WordPress version": 404 for readme.html and license.txt, which show the version.
+ *  - "Disable XML-RPC": 404 for xmlrpc.php.
+ * These are real files, so PHP never serves them and they have to be blocked by the web server.
+ * Runs in the admin and only touches an existing, writable .htaccess. On nginx add the equivalent:
+ * location ~* ^/(readme\.html|license\.txt|xmlrpc\.php)$ { return 404; }
+ */
+function tailbase_sync_htaccess()
+{
+    $file = trailingslashit(get_home_path()) . ".htaccess";
+
+    if (!file_exists($file) || !is_writable($file)) {
+        return;
+    }
+
+    $files = [];
+
+    if (tailbase_security_enabled("hide_wp_version")) {
+        $files[] = "readme\.html";
+        $files[] = "license\.txt";
+    }
+
+    if (tailbase_security_enabled("disable_xmlrpc")) {
+        $files[] = "xmlrpc\.php";
+    }
+
+    $rules = $files
+        ? [
+            "<IfModule mod_rewrite.c>",
+            "    RewriteEngine On",
+            "    RewriteRule ^(" . implode("|", $files) . ")$ - [R=404,L,NC]",
+            "</IfModule>",
+        ]
+        : [];
+
+    // Skip the write when the file already matches, so this costs one read per admin request.
+    if (extract_from_markers($file, "Tailbase") !== $rules) {
+        insert_with_markers($file, "Tailbase", $rules);
+    }
+}
+add_action("admin_init", "tailbase_sync_htaccess");
 
 /**
  * Blocks PHP execution in the uploads directory (Apache), so a malicious file that gets uploaded cannot run.
