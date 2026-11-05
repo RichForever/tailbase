@@ -12,7 +12,9 @@
   <head>
     <meta charset="<?php bloginfo("charset"); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php if (!tailbase_security_enabled("disable_xmlrpc")): ?>
     <link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
+    <?php endif; ?>
     <?php wp_head(); ?>
   </head>
 
@@ -35,7 +37,7 @@
           home_url("/"),
       ); ?>" class="navbar__brand" aria-label="Przejdź do strony głównej">
         <div class="inline-block">
-          <hq class="font-brico text-picton-blue text-xl leading-none font-bold whitespace-nowrap">Planet English</hq>
+          <hq class="font-brico text-picton-blue text-fluid-xl leading-none font-bold whitespace-nowrap">Planet English</hq>
         </div>
       </a>
     <?php endif; ?>

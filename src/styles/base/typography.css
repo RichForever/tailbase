@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-size: var(--text-base);
+  font-size: var(--text-fluid-base);
 }
 
 p {
@@ -43,10 +43,10 @@ h5 {
 }
 
 h6 {
-  font-size: var(--text-md);
+  font-size: var(--text-fluid-md);
 }
 
 small,
 .text_small {
-  font-size: var(--text-sm);
+  font-size: var(--text-fluid-sm);
 }

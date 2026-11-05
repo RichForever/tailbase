@@ -1,6 +1,6 @@
 .btn:not(.wp-block-button),
 .btn > .wp-block-button__link {
-  @apply inline-flex items-center rounded-lg px-8 py-3 text-center text-sm font-semibold text-white-500 focus:ring-4 focus:ring-black-300 xl:text-base;
+  @apply inline-flex items-center rounded-lg px-8 py-3 text-center text-fluid-sm font-semibold text-white-500 focus:ring-4 focus:ring-black-300 xl:text-fluid-base;
 }
 
 .btn--primary:not(.wp-block-button),
