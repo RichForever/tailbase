@@ -91,9 +91,9 @@ scripts/build-tokens.js   generates src/styles/tokens.css from theme.json
 scripts/zip-theme.js      packages the theme into dist/<theme>-<version>.zip
 src/scripts/          JS entry (Alpine + small components)
 src/styles/           CSS entries and partials
-src/fonts/            Inter (latin-ext) web fonts
 src/images/           images for templates and CSS, optimised and hashed by webpack (see Images)
 assets/icons/         SVG icons, printed with tailbase_get_icon('name')
+assets/fonts/         Inter (latin-ext) web fonts, referenced from src/styles/base/fonts.css, not bundled
 build/                webpack output + manifest.json (git-ignored)
 ```
 
