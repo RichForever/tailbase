@@ -1,3 +1,8 @@
+/*
+ * Fonts live in assets/fonts and are not bundled. Tailwind rebases these url()s relative to the entry
+ * stylesheets in src/styles/, so "../../assets/" here becomes "../assets/" in build/*.css, which is correct
+ * for the compiled CSS (build/ and assets/ are siblings). Keep this prefix when adding fonts.
+ */
 /* inter-100 - latin-ext */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -5,9 +10,9 @@
   font-style: normal;
   font-weight: 100;
   src:
-    url("~fonts/inter-v12-latin-ext-100.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-100.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-100.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-100.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inter-200 - latin-ext */
 @font-face {
@@ -16,9 +21,9 @@
   font-style: normal;
   font-weight: 200;
   src:
-    url("~fonts/inter-v12-latin-ext-200.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-200.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-200.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-200.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inter-300 - latin-ext */
 @font-face {
@@ -27,9 +32,9 @@
   font-style: normal;
   font-weight: 300;
   src:
-    url("~fonts/inter-v12-latin-ext-300.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-300.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-300.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-300.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inter-regular - latin-ext */
 @font-face {
@@ -38,9 +43,9 @@
   font-style: normal;
   font-weight: 400;
   src:
-    url("~fonts/inter-v12-latin-ext-regular.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-regular.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-regular.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-regular.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inter-500 - latin-ext */
 @font-face {
@@ -49,9 +54,9 @@
   font-style: normal;
   font-weight: 500;
   src:
-    url("~fonts/inter-v12-latin-ext-500.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-500.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-500.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-500.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inter-600 - latin-ext */
 @font-face {
@@ -60,9 +65,9 @@
   font-style: normal;
   font-weight: 600;
   src:
-    url("~fonts/inter-v12-latin-ext-600.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-600.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-600.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-600.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inter-700 - latin-ext */
 @font-face {
@@ -71,9 +76,9 @@
   font-style: normal;
   font-weight: 700;
   src:
-    url("~fonts/inter-v12-latin-ext-700.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-700.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-700.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-700.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inter-800 - latin-ext */
 @font-face {
@@ -82,9 +87,9 @@
   font-style: normal;
   font-weight: 800;
   src:
-    url("~fonts/inter-v12-latin-ext-800.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-800.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-800.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-800.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* inter-900 - latin-ext */
 @font-face {
@@ -93,7 +98,7 @@
   font-style: normal;
   font-weight: 900;
   src:
-    url("~fonts/inter-v12-latin-ext-900.woff2") format("woff2"),
+    url("../../assets/fonts/inter-v12-latin-ext-900.woff2") format("woff2"),
     /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("~fonts/inter-v12-latin-ext-900.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      url("../../assets/fonts/inter-v12-latin-ext-900.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }

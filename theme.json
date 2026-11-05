@@ -197,49 +197,24 @@
       "fluid": false,
       "fontSizes": [
         {
-          "name": "xs",
-          "slug": "xs",
-          "size": "0.625rem"
+          "name": "fluid-xs",
+          "slug": "fluid-xs",
+          "size": "clamp(0.5rem, 0.458rem + 0.208vw, 0.625rem)"
         },
         {
-          "name": "sm",
-          "slug": "sm",
-          "size": "0.8125rem"
+          "name": "fluid-sm",
+          "slug": "fluid-sm",
+          "size": "clamp(0.625rem, 0.562rem + 0.312vw, 0.8125rem)"
         },
         {
-          "name": "base",
-          "slug": "base",
-          "size": "1rem"
+          "name": "fluid-base",
+          "slug": "fluid-base",
+          "size": "clamp(0.8125rem, 0.75rem + 0.312vw, 1rem)"
         },
         {
-          "name": "md",
-          "slug": "md",
-          "size": "1.25rem"
-        },
-        {
-          "name": "lg",
-          "slug": "lg",
-          "size": "1.562rem"
-        },
-        {
-          "name": "xl",
-          "slug": "xl",
-          "size": "1.938rem"
-        },
-        {
-          "name": "2xl",
-          "slug": "2xl",
-          "size": "2.438rem"
-        },
-        {
-          "name": "3xl",
-          "slug": "3xl",
-          "size": "3.062rem"
-        },
-        {
-          "name": "4xl",
-          "slug": "4xl",
-          "size": "3.812rem"
+          "name": "fluid-md",
+          "slug": "fluid-md",
+          "size": "clamp(1rem, 0.917rem + 0.417vw, 1.25rem)"
         },
         {
           "name": "fluid-lg",

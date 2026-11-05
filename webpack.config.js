@@ -14,12 +14,10 @@ const config = {
     scripts: './src/scripts',
     styles: './src/styles',
     images: './src/images',
-    fonts: './src/fonts',
   },
   build: {
     main: './build',
     images: '',
-    fonts: '',
   }
 }
 
@@ -74,7 +72,17 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: "css-loader",
+              options: {
+                // Fonts live in assets/fonts and are loaded straight from there (relative to build/), not bundled.
+                url: { filter: (url) => !url.includes("assets/fonts/") },
+              },
+            },
+            "postcss-loader",
+          ],
         },
         {
           test: /\.(jpe?g|png|gif|svg|webp|avif)$/i,
@@ -88,13 +96,6 @@ module.exports = (env, argv) => {
                 .replace(/^/, "images/"),
           },
         },
-        {
-          test: /\.(woff|woff2|eot|ttf|otf)$/i,
-          type: "asset/resource",
-          generator: {
-            filename: "fonts/[name][ext]",
-          },
-        },
         // Add your rules for custom modules here
         // Learn more about loaders from https://webpack.js.org/loaders/
       ],
@@ -102,7 +103,6 @@ module.exports = (env, argv) => {
     resolve: {
       alias: {
         images: path.join(__dirname, config.src.images),
-        fonts: path.join(__dirname, config.src.fonts),
       },
     },
     optimization: {
