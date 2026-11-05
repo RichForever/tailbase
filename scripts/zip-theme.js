@@ -1,4 +1,4 @@
-// Packages the theme into dist/<theme>-<version>.zip, ready to upload to WordPress.
+// Packages the theme into release/<theme>-<version>.zip, ready to upload to WordPress.
 // Run `npm run zip` (it builds first). Only the files listed below are included.
 const fs = require("fs");
 const path = require("path");
@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, "..");
 const themeName = path.basename(root);
 const { version } = require(path.join(root, "package.json"));
 
-const outDir = path.join(root, "dist");
+const outDir = path.join(root, "release");
 const outFile = path.join(outDir, `${themeName}-${version}.zip`);
 
 // Directories to include (source maps are left out).

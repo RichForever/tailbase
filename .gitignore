@@ -2,7 +2,7 @@ auth.json
 vendor
 node_modules
 public
-dist
+release
 !docker/*
 !docker/auth.json
 build
